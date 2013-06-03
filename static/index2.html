@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Live-Ticker</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="application">
+	<h1>{{title}}</h1>
+
+	{{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+	<h1>{{clubName}}</h1>
+
+	{{#linkTo "matchOverview"}}<button class="menu-button">Spielübersicht</button>{{/linkTo}}</br>
+	{{#linkTo "account"}}<button class="menu-button">Konto</button>{{/linkTo}}</br>
+	{{#linkTo "playerPool"}}<button class="menu-button">Spielerpool</button>{{/linkTo}}</br>
+	{{#linkTo "teams"}}<button class="menu-button">Mannschaften</button>{{/linkTo}}</br>
+	{{#linkTo "club"}}<button class="menu-button">Verein</button>{{/linkTo}}</br>
+
+	<footer>
+		{{#linkTo "login"}}Anmelden{{/linkTo}}
+		|
+		{{#linkTo "register"}}Registrieren{{/linkTo}}
+	</footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="tabs">
+	<label>Filter: <select size="1">
+		<option>Kein Filter</option>
+		<option>Herren</option>
+	</select></label></br>
+	{{#linkTo "matchOverview.newMatch"}}<button class="menu-button">Neues Spiel</button>{{/linkTo}}</br>
+
+	<div class="tabs">
+		<ul>
+			<li {{#linkTo "tabs.finished" tagName="span"}}Beendete Spiele{{/linkTo}}</li>
+			<li {{#linkTo "tabs.live"}}Live{{/linkTo}}</li>
+			<li {{#linkTo "tabs.coming"}}Kommende Spiele{{/linkTo}}</li>
+		</ul>
+	</div>
+
+
+	<div class="tabpanel">
+		<div class="tabs">
+			<div {{action "goToFirstTab" target="controller"}}>First tab</div>
+		<div {{action "goToSecondTab" target="controller"}}>Second tab</div>
+	</div>
+	{{outlet}}
+	</div>
+</script>
+
+<!--
+<script type="text/x-handlebars" data-template-name="matchOverview/index">
+	{{outlet}}
+</script>-->
+<!--
+<script type="text/x-handlebars" data-template-name="match">
+	<div>
+		{{#view App.MatchView}}
+			<p>{{view.teamHome}} - {{view.teamAway}}</p>
+			<h1>{{goalsHome}} : {{goalsAway}}</h1>
+			<p>{{view.date}} {{view.teamGroup}} {{view.time}}</p>
+		{{/view}}
+	</div>
+</script>
+-->
+
+<script type="text/x-handlebars" data-template-name="tabs/finished">
+
+</script>
+<!--{{#view App.MatchList}}{{/view}}-->
+<!--{{view App.MatchList tagName="span"}}-->
+<!--Beendete Spiele Content
+{{#view App.MatchView}}
+<b>Posts:</b> {{view.homeAdvantage}}
+<br>
+<b>Hobbies:</b> {{view.opponent}}
+{{/view}}-->
+<!--
+{{#each App.MatchController}}
+<p>{{homeAdvantage}}</p>
+{{/each}}
+{{#each App.MatchList}}
+<p>{{content}}</p>
+{{/each}}-->
+<!--{{#view App.MatchView}}
+	<p>{{view.teamHome}} - {{view.teamAway}}</p>
+	<h1>{{view.goalsHome}} : {{view.goalsAway}}</h1>
+	<p>{{view.date}} {{view.teamGroup}} {{view.time}}</p>
+{{/view}}-->
+<script type="text/x-handlebars" data-template-name="tabs/live">
+	Live Spiele Content
+</script>
+
+<script type="text/x-handlebars" data-template-name="tabs/coming">
+	kommende Spiele Content
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/newMatch">
+	<h3>{{subtitle}}</h3>
+</script>
+
+
+
+
+<script type="text/x-handlebars" data-template-name="matchOverview/index">
+	<div class="tabpanel">
+		<div class="tabs">
+			<div {{action "goToFirstTab"}}>First tab</div>
+		<div {{action "goToSecondTab"}}>Second tab</div>
+	</div>
+	{{outlet}}
+	</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="tabs/firstTab">
+	First Tab content
+</script>
+
+<script type="text/x-handlebars" data-template-name="tabs/secondTab">
+	Second Tab content
+</script>
+
+
+
+
+
+<script src="js/libs/jquery-1.9.1.js"></script>
+<script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+<script src="js/libs/ember-1.0.0-rc.2.js"></script>
+<script src="js/libs/ember-data-latest.js"></script>
+<script src="js/app.js"></script>
+<script src="js/router.js"></script>
+<script src="js/models2.js"></script>
+<script src="js/views2.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/templates.js"></script>
+</body>
+</html>

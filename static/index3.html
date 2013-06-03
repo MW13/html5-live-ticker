@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8">
+	<title>Live-Ticker</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="login">
+	{{view Ember.TextField valueBinding="name" action="saveName"}}
+	<h1>Hallo {{name}}</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="application">
+	{{outlet applicationOutlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+	<h1>Index {{title}}</h1>
+	<button {{#linkTo "start"}}Spielübersicht{{/linkTo}}</button>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="matchOverview">
+	<h1>MatchOverview {{title}}</h1>
+	<!--<button {{action openNewMatch}}>Neues Spiel</button>-->
+	<button {{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
+</script>
+
+<script type="text/x-handlebars" data-template-name="start">
+	<h1>Start {{title}}</h1>
+	<button {{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
+	<ul>
+		<li {{#linkTo "start.finished"}}Beendet{{/linkTo}}</li>
+		<li {{#linkTo "start.live"}}Live{{/linkTo}}</li>
+	</ul>
+	{{outlet tabsOutlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="start/index">
+	<h2>Start.index</h2>
+
+	{{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="start/finished">
+	<h1>Start.finished {{title}}</h1>
+	<p>Beendet Liste</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="start/live">
+	<h1>Start.live {{title}}</h1>
+	<p>Live Liste</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/newMatch">
+	<h1>MatchOverview.newMatch {{title}}</h1>
+	<!--<button {{action openNewMatch}}>Spiel</button>-->
+</script>
+
+<script src="js/libs/jquery-1.9.1.js"></script>
+<script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+<script src="js/libs/ember-1.0.0-rc.2.js"></script>
+<script src="js/libs/ember-data-latest.js"></script>
+<script src="js/app3.js"></script>
+<script src="js/app2.js"></script>
+</body>
+</html>

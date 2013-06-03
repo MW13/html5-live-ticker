@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8">
+	<title>Live-Ticker</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="application">
+	{{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+	<h1>1 {{content.name}} 2 {{name}} 3 {{controllers.club.name}}</h1>
+
+	{{#linkTo "matchOverview"}}<button {{bindAttr class="btnClass"}}>Spielübersicht</button>{{/linkTo}}</br>
+
+	{{#if isModerator}}
+	{{#linkTo "account"}}<button {{bindAttr class="btnClass"}}>Konto</button>{{/linkTo}}</br>
+	{{#linkTo "playerPool"}}<button {{bindAttr class="btnClass"}}>Spielerpool</button>{{/linkTo}}</br>
+	{{#linkTo "teams"}}<button {{bindAttr class="btnClass"}}>Mannschaften</button>{{/linkTo}}</br>
+	{{/if}}
+
+	{{#if isAdministrator}}
+	{{#linkTo "club"}}<button {{bindAttr class="btnClass"}}>Verein</button>{{/linkTo}}</br>
+	{{/if}}
+
+	<footer>
+		{{#linkTo "login"}}Anmelden{{/linkTo}}
+		|
+		{{#linkTo "register"}}Registrieren{{/linkTo}}
+		</br>
+		<p>&copy; 2013 MW</p>
+	</footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview">
+	<h1>{{title}}</h1>
+	{{#linkTo "newMatch"}}<button class="menu-button">Neues Spiel</button>{{/linkTo}}</br>
+	<a {{#linkTo "matchOverview.finished"}}Beendet{{/linkTo}}</a>
+	<a {{#linkTo "matchOverview.live"}}Live{{/linkTo}}</a>
+	<a {{#linkTo "matchOverview.coming"}}Kommend{{/linkTo}}</a>
+	<div style="height: 400px; overflow-x: hidden; overflow-y: auto;">{{outlet}}</div>
+	Spiele insgesamt: {{amountMatches}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/index">
+	<h1>matchOverview.index</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/finished">
+	<h1>matchOverview.finished</h1>
+	{{#each match in matches itemController="match"}}
+	<!--{{match.place}} Hallo! {{match.teamHome}}-->
+	{{view App.MatchView contentBinding="this"}}
+	{{/each}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/live">
+	<h1>matchOverview.live</h1>
+	{{#each match in matches itemController="match"}}
+	<!--{{match.place}} Hallo! {{match.teamHome}}-->
+	{{view App.MatchView contentBinding="this"}}
+	{{/each}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="matchOverview/coming">
+	<h1>matchOverview.coming</h1>
+	{{#each match in matches itemController="match"}}
+	<!--{{match.place}} Hallo! {{match.teamHome}}-->
+	{{view App.MatchView contentBinding="this"}}
+	{{/each}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="newMatch">
+	<h1>newMatch</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="login">
+	<h1>login</h1>
+	<form id="loginForm" class="forms">
+		<label>Email-Adresse:<br><input type="text" name="email"></label><br>
+		<label>Passwort:<br><input type="password" name="password"></label><br>
+		{{#view App.LoginButton}}<button {{bindAttr class="btnClass"}}>Anmelden</button>{{/view}}
+	</form>
+</script>
+
+<script type="text/x-handlebars" data-template-name="register">
+	<h1>register</h1>
+	<form id="registerForm" class="forms">
+		<label>Email-Adresse:<br><input type="text" name="email"></label><br>
+		<label>Vorname:<br><input type="text" name="firstname"></label><br>
+		<label>Nachname:<br><input type="text" name="lastname"></label><br>
+		<label>Passwort:<br><input type="password" name="password1"></label><br>
+		<label>Passwort bestätigen:<br><input type="password" name="password2"></label><br>
+		{{#view App.RegisterButton}}<button {{bindAttr class="btnClass"}}>Registrieren</button>{{/view}}
+		<!--<button {{action register}}>Registrieren</button>-->
+	</form>
+</script>
+
+<script type="text/x-handlebars" data-template-name="account">
+	<h1>account</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="playerPool">
+	<h1>playerPool</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="newPlayer">
+	<h1>newPlayer</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="editPlayer">
+	<h1>editPlayer</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="teams">
+	<h1>teams</h1>
+	{{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="teams/index">
+	<h1>teams.index</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="teams/managePlayers">
+	<h1>teams.managePlayers</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="teams/manageModerators">
+	<h1>teams.manageModerators</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="club">
+	<h1>club {{content.name}}</h1>
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="newTeams">
+	<h1>newTeams</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="editClub">
+	<h1>editClub</h1>
+</script>
+
+<script src="js/libs/jquery-1.9.1.js"></script>
+<script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
+<script src="js/libs/ember-latest.js"></script>
+<script src="js/libs/ember-data-latest.js"></script>
+<!--<script src="/socket.io/socket.io.js"></script>-->
+<script src="js/app.js"></script>
+<script src="js/stateManager.js"></script>
+<!--<script src="js/SocketAdapter.js"></script>-->
+<script src="js/helper.js"></script>
+<script src="js/models1.js"></script>
+<script src="js/router.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/views.js"></script>
+</body>
+</html>

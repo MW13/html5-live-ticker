@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src = "js/libs/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src = "js/libs/handlebars-1.0.0-rc.3.js"></script>
+    <script type="text/javascript" src = "js/libs/ember-latest.js"></script>
+    <script type="text/javascript" src = "js/libs/ember-data-latest.js"></script>
+    <script type="text/javascript" src="/socket.io/lib/socket.io.js"></script>
+	<script type="text/javascript" src="js/SocketAdapter.js"></script>
+    <script type="text/javascript" src="js/emberApp.js"></script>
+    <LINK href="/css/app.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+  <script type="text/x-handlebars" data-template-name="box">
+    {{view.content.text}}
+    <button {{action delBox view.content}}> Delete </button>
+  </script> 
+  
+  
+  <script type="text/x-handlebars" data-template-name="boxs">
+    <button {{action addBox}}> Add Box </button>
+    
+    {{view Em.TextField valueBinding = 'controller.selBox.text' 
+      placeholder = "selected Box text"}}
+      
+    <button {{action saveText}}> Save Text </button>  
+    <section id = "mainarea">
+      {{#each box in controller}}
+        {{view 'App.BoxView' contentBinding = 'box'}}
+      {{/each}}
+    </section>
+  </script> 
+  
+  
+  
+  </body>
+</html>
