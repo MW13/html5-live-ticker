@@ -30,6 +30,7 @@
 				<img class="nav-logo pull-left" src="images/logo.png">
 				<ul class="nav pull-left">
 					<li>{{#linkTo "matches"}}Spieleübersicht{{/linkTo}}</li>
+					<li>{{#linkTo "test"}}Test{{/linkTo}}</li>
 					{{#with App.session}}
 						{{#if user}}
 							<li>{{#linkTo "playerList"}}Spielerpool{{/linkTo}}</li>
@@ -130,16 +131,16 @@
 	<h3>Neues Spiel</h3>
 
 	<form id="form_newMatch">
-		<label>Heimspiel: {{view Ember.Checkbox checkedBinding="App.match.homeAdvantage"}}</label>
-		<label>Gegner: {{view Ember.TextField type="text" valueBinding="App.match.opponent"}}</label>
-		<label>Termin: <input type="date" name="date"></label>
-		<label>Anstoß: <input type="time" name="time"></label>
-		<label>Spielort: {{view Ember.TextField type="text" valueBinding="App.match.place"}}</label>
+		<label>Heimspiel: {{view Ember.Checkbox checkedBinding="controller.homeAdvantage"}}</label>
+		<label>Gegner: {{view Ember.TextField type="text" valueBinding="controller.opponent"}}</label>
+		<label>Termin: {{view App.DateField valueBinding="controller.date"}}</label> {{controller.date}}
+		<label>Anstoß: {{view App.TimeField valueBinding="controller.time"}}</label> {{controller.time}}
+		<label>Spielort: {{view Ember.TextField type="text" valueBinding="controller.place"}}</label>
 		<label>Team: {{view Ember.Select contentBinding="controllers.teams.content"
 						optionValuePath="content.id"
 						optionLabelPath="content.name"
 						prompt="Wähle eine Mannschaft"
-						valueBinding="App.match.teamId"}}</label>
+						valueBinding="controller.teamId"}}</label>
 	</form>
 
 	{{view App.AddMatchButton}}
@@ -148,15 +149,16 @@
 <script type="text/x-handlebars" data-template-name="match">
 	{{outlet}}
 
+	{{controller}}{{content}}{{model}}
 	{{render "matchOverview" this}}
 
 	{{#with App.session}}
 		{{#if user}}
-			{{#linkTo "addMatchEvent"}}<button>Neues Spielereignis</button>{{/linkTo}}
 			{{#if controller.notStarted}}
 				<button {{action startMatch}}>Spiel starten</button>
 			{{/if}}
 			{{#if controller.started}}
+				{{#linkTo "addMatchEvent"}}<button>Neues Spielereignis</button>{{/linkTo}}
 				<button {{action stopMatch}}>Spiel beenden</button>
 			{{/if}}
 		{{/if}}
@@ -334,7 +336,7 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="matchOverview">
-	<div class="matchOverview">
+	<div class="matchOverview">{{content}}
 		<h4>{{teamHome}} - {{teamAway}}</h4>
 		<h1>{{goalsHome}} : {{goalsAway}}</h1>
 		<p>{{date}} {{team.name}} {{time}}</p>
@@ -344,7 +346,7 @@
 <script type="text/x-handlebars" data-template-name="playerListElement">
 	<table>
 		<tr>
-			<td class="name">{{view.content.firstName}} {{view.content.lastName}}, {{view.content.age}}</td>
+			<td class="name">{{view.content.fullNameInverse}}, {{view.content.age}} - {{view.content.id}}</td>
 			<td class="edit"><img class='listImage' {{action edit view.content bubbles=false}} src='images/edit.png'></td>
 			<td class="delete"><img class='listImage' {{action delete view.content bubbles=false}} src='images/cancel.png'></td>
 		</tr>
@@ -357,6 +359,7 @@
 			<div class="span12 centered">
 				<h3>Spielerpool</h3>
 				{{#linkTo "playerList.new"}}<button>Spieler anlegen</button>{{/linkTo}}
+				{{this.content.length}}
 			</div>
 		</div>
 		<div class="row">
@@ -385,7 +388,7 @@
 		<h5>Neuer Spieler</h5>
 		<label>Vorname:<br>{{view Ember.TextField valueBinding="controller.firstName"}}</label>
 		<label>Nachname:<br>{{view Ember.TextField valueBinding="controller.lastName"}}</label>
-		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="controller.lastName"}}</label>
+		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="controller.lastName" disabled="true"}}</label>
 		<label>Geburtstag:<br>{{view App.DateField valueBinding="controller.birthday"}}</label>
 		<button {{action createPlayer}}>Anlegen</button>
 	</div>
@@ -397,7 +400,7 @@
 			<div class="span12">
 				<h3>Mannschaften</h3>
 
-				<label>Mannschaft: {{view App.MySelect viewName="select" 	contentBinding="controllers.teams.content"
+				<label>Mannschaft: {{view App.MySelect viewName="select" contentBinding="content"
 					optionValuePath="content.id"
 					optionLabelPath="content.name"
 					prompt="Wähle eine Mannschaft"
@@ -432,6 +435,27 @@
 		<div></div>
 	</div>
 
+</script>
+
+<script type="text/x-handlebars" data-template-name="test">
+	<h1>Test</h1>
+	{{content}} {{content.name}} {{content.teams}} {{content.teams.length}}<br>
+	{{#each team in content.teams}}
+		Teamname: {{team.name}}, TeamId: {{team.id}}, Teamkader: {{team.players.length}}<br>
+		{{#each player in team.players}}
+			Spieler: {{player.fullName}}, Spielername: {{player.age}}<br>
+		{{/each}}
+	{{/each}}
+	<hr>
+	Spielerinstanz: {{content.players}}, Spieleranzahl: {{content.players.length}}<br>
+	{{#each player in content.players}}
+	Spieler: {{player.fullName}}, Spielername: {{player.age}}<br>
+	{{/each}}
+
+	{{controllers.playerList.content.length}}<br>
+	{{#each player in controllers.playerList.content}}
+		{{player}} {{player.id}} {{player._id}}
+	{{/each}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="team">
@@ -481,14 +505,16 @@
 </script>
 
 <script src="js/libs/jquery-1.9.1.js"></script>
-<script src="js/libs/handlebars-1.0.0-rc.3.js"></script>
-<script src="js/libs/ember-latest.js"></script>
-<script src="js/libs/ember-data-latest.js"></script>
+<script src="js/libs/handlebars-1.0.0-rc.4.js"></script>
+<script src="js/libs/ember-1.0.0-rc.5.js"></script>
+<script src="js/libs/ember-data-0.13.js"></script>
 <script src="js/libs/bootstrap.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/app.js"></script>
 <script src="js/helper.js"></script>
 <script src="js/helperMatchEvent.js"></script>
 <script src="js/textGenerator.js"></script>
+<script src="js/socketAdapter.js"></script>
 <script src="js/models1.js"></script>
 <script src="js/myRouter.js"></script>
 <script src="js/myControllers.js"></script>

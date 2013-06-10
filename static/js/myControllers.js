@@ -27,109 +27,6 @@ App.ApplicationController = Ember.Controller.extend({
 	}
 });
 
-App.TeamsController = Ember.ArrayController.extend({
-	/*needs: ["club"],
-	clubBinding: "controllers.club",
-	clubTeams: function() {
-		var club = this.get("controllers.club");
-		var teams = this.filter(function(team) {
-			return team.get("club").get("id") == club.get("id");
-		});
-		return teams;
-	}.property("@each")*/
-	needs: ["club", "teams", "playerList"],
-	clubBinding: "controllers.club",
-	clubPlayerList: function() {
-		var club = this.get("controllers.club");
-		var teamPlayerList = this.get("teamPlayerList");
-		var playerList = this.get("controllers.playerList").filter(function(player) {
-			return (!teamPlayerList.contains(player) && player.get("club").get("id") == club.get("id"));
-		});
-		return playerList;
-	}.property("@each", "teamPlayerList"),
-	selectedTeamId: null,
-	selectedTeamName: function() {
-		return App.Team.find(this.get("selectedTeamId")).get("name");
-	}.property("selectedTeamId"),
-	teamPlayerList: function() {
-		console.log("calculate teamPlayerList");
-		var clubPlayerList = this.get("controllers.playerList");
-		var selectedTeamId = this.get("selectedTeamId");
-		var playerList = [];
-		clubPlayerList.forEach(function(player) {
-			var teams = player.get("teams");
-			teams.forEach(function(team) {
-				if (team.get("id") == selectedTeamId) {
-					playerList.pushObject(player);
-				}
-			});
-		});
-		return playerList;
-	}.property("@each", "selectedTeamId", "clubPlayerList"),
-	valueChanged: function(value) {
-		this.set("selectedTeamId", value);
-	}
-});
-
-App.PlayerListController = Ember.ArrayController.extend({
-	needs: ["club", "playerList"],
-	clubPlayerList: function() {
-		var club = this.get("controllers.club");
-		var playerList = this.get("controllers.playerList").filter(function(player) {
-			return player.get("club").get("id") == club.get("id");
-		});
-		return playerList;
-	}.property("@each"),
-	delete: function(player) {
-		alert("delete " + player);
-		player.deleteRecord();
-	},
-	edit: function(player) {
-		alert("edit");
-		this.transitionToRoute("player", player);
-	}
-});
-
-App.PlayerListNewController = Ember.ObjectController.extend({
-	needs: ["club"],
-	firstName: "",
-	lastName: "",
-	birthday: "",
-	createPlayer: function() {
-		var firstName = this.get("firstName");
-		var lastName = this.get("lastName");
-		var bday = new Date(this.get("birthday"));
-		console.log("bday: " + bday + " - " + this.get("birthday"));
-		if (isValidText(firstName) && isValidText(lastName) && isValidBday(bday)) {
-			var clubId = this.get("controllers.club.id");
-			var player = Ember.Object.create({
-				firstName: firstName,
-				lastName: lastName,
-				birthday: bday,
-				club: App.Club.find(clubId)
-			});
-			App.Player.createRecord(player);
-			this.set("firstName", "");
-			this.set("lastName", "");
-			this.set("birthday", "");
-		}
-	}
-});
-
-App.article = Ember.Object.create({
-	content: ["der", "die", "das"],
-	selectedArticle: null
-});
-
-App.TeamController = Ember.ObjectController.extend({});
-
-App.ClubController = Ember.ObjectController.extend({
-});
-
-App.session = Ember.Object.create({
-	user: null
-});
-
 App.MatchesController = Ember.ArrayController.extend({
 	needs: ["club"],
 	clubBinding: 'controllers.club',
@@ -231,27 +128,27 @@ App.matchEvent = Ember.Object.create({
 
 App.creations = Ember.Object.create({
 	content: [{id: "dribbling", name: "Dribbling", type: "solo"},
-				{id: "easy_goal", name: "Abstauber", type: "solo"},
-				{id: "corner", name: "Eckstoß", type: "solo"},
-				{id: "penalty", name: "Elfmeter", type: "solo"},
-				{id: "long_shot", name: "Fernschuss", type: "solo"},
-				{id: "free_kick", name: "Freistoß", type: "solo"},
-				{id: "lob", name: "Lupfer", type: "solo"},
-				{id: "double_pass", name: "Doppelpass", type: "assist"},
-				{id: "corner_cross", name: "Eckstoß", type: "assist"},
-				{id: "cross_high", name: "Flanke (hoch)", type: "assist"},
-				{id: "cross_low", name: "Flanke (flach)", type: "assist"},
-				{id: "free_kick_short", name: "Freistoß (Ablage)", type: "assist"},
-				{id: "free_kick_cross", name: "Freistoß (Flanke)", type: "assist"},
-				{id: "cross_kick", name: "Querpass", type: "assist"}]
+		{id: "easy_goal", name: "Abstauber", type: "solo"},
+		{id: "corner", name: "Eckstoß", type: "solo"},
+		{id: "penalty", name: "Elfmeter", type: "solo"},
+		{id: "long_shot", name: "Fernschuss", type: "solo"},
+		{id: "free_kick", name: "Freistoß", type: "solo"},
+		{id: "lob", name: "Lupfer", type: "solo"},
+		{id: "double_pass", name: "Doppelpass", type: "assist"},
+		{id: "corner_cross", name: "Eckstoß", type: "assist"},
+		{id: "cross_high", name: "Flanke (hoch)", type: "assist"},
+		{id: "cross_low", name: "Flanke (flach)", type: "assist"},
+		{id: "free_kick_short", name: "Freistoß (Ablage)", type: "assist"},
+		{id: "free_kick_cross", name: "Freistoß (Flanke)", type: "assist"},
+		{id: "cross_kick", name: "Querpass", type: "assist"}]
 });
 
 App.bodyParts = Ember.Object.create({
 	content: [{id: "head", name: "Kopf", types: ["easy_goal", "lob", "corner_cross", "cross_high", "free_kick_cross"]},
-				{id: "foot_left", name: "Fuß (links)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
-				{id: "foot_right", name: "Fuß (rechts)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
-				{id: "heel", name: "Hacke", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_cross", "cross_kick"]},
-				{id: "knee", name: "Knie", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "free_kick_cross", "cross_kick"]}]
+		{id: "foot_left", name: "Fuß (links)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
+		{id: "foot_right", name: "Fuß (rechts)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
+		{id: "heel", name: "Hacke", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_cross", "cross_kick"]},
+		{id: "knee", name: "Knie", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "free_kick_cross", "cross_kick"]}]
 });
 
 App.goal = Ember.Object.create({
@@ -269,16 +166,16 @@ App.assist = Ember.Object.create({
 	assistNr: 0
 });
 /*
-App.match = Ember.Object.create({
-	homeAdvantage: false,
-	opponent: "",
-	date: "",
-	time: "",
-	place: "",
-	teamId: 0,
-	minute: 0
-});
-*/
+ App.match = Ember.Object.create({
+ homeAdvantage: false,
+ opponent: "",
+ date: "",
+ time: "",
+ place: "",
+ teamId: 0,
+ minute: 0
+ });
+ */
 App.MatchController = Ember.ObjectController.extend({
 	timer: null,
 	notStarted: function() {
@@ -317,23 +214,31 @@ App.MatchController = Ember.ObjectController.extend({
 
 App.AddMatchController = Ember.Controller.extend({
 	needs: ["matches", "teams"],
+	homeAdvantage: false,
+	opponent: "",
+	date: "",
+	time: "",
+	place: "",
+	teamId: 0,
 	addMatch: function() {
-		var homeAdvantage = App.match.homeAdvantage;
-		var opponent = App.match.opponent;
+		var homeAdvantage = this.get("homeAdvantage");
+		var opponent = this.get("opponent");
+		var date = this.get("date");
+		var time = this.get("time");
 		var form = document.getElementById("form_newMatch");
-		var kickoff = new Date(form.date.value + " " + form.time.value);
-		console.log(form.date.value);
-		console.log(form.time.value);
-		var place = App.match.place;
-		var teamId = App.match.teamId;
-		console.log(homeAdvantage + ", " + opponent + ", " + kickoff.getTime() + ", " + place + ", " + teamId);
+		var kickoff = new Date(date + " " + time);
+		console.log(date);
+		console.log(time);
+		var place = this.get("place");
+		var teamId = this.get("teamId");
+		console.log(homeAdvantage + ", " + opponent + ", " + kickoff + ", " + place + ", " + teamId);
 		var matches = this.get("controllers.matches.content");
 		console.log(matches);
 		if (isValidText(opponent) && isValidTime(kickoff) && isValidText(place)) {
 			var match = App.Match.createRecord({
 				homeAdvantage: homeAdvantage,
 				opponent: opponent,
-				kickoff: kickoff.getTime(),
+				kickoff: kickoff,
 				place: place,
 				ownGoals: 0,
 				opponentGoals: 0,
@@ -343,6 +248,7 @@ App.AddMatchController = Ember.Controller.extend({
 				team: App.Team.find(teamId)
 			});
 			console.log(match);
+			match.transaction.commit();
 			this.transitionToRoute("matches");
 		}
 
@@ -355,7 +261,7 @@ App.AddMatchEventController = Ember.Controller.extend({
 	assistWithNumber: false,
 	valueChanged: function(value) {
 		/*var matchEvent = App.MatchEvent2.create({});
-		matchEvent.club = this.get("clubReference");*/
+		 matchEvent.club = this.get("clubReference");*/
 		switch(value) {
 			case "Tor": {
 				App.matchEventTypes.set("goal", true);
@@ -388,14 +294,14 @@ App.AddMatchEventController = Ember.Controller.extend({
 			var match = this.get("controllers.match");
 			var selectedTeam = match.get("team");
 			console.log("team: " + selectedTeam);
+			var clubId = this.get("controllers.club.id");
 			clubPlayerList.forEach(function(player) {
-				var teams = player.get("teams");
-				teams.forEach(function(team) {
-					if (team.get("id") == selectedTeam.get("id")) {
-						playerList.pushObject(player);
-						console.log(player);
-					}
-				});
+				var teamId = player.get("team.id");
+				var playerClubId = player.get("team.id");
+				if (playerClubId == clubId && teamId == selectedTeam.get("id")) {
+					playerList.pushObject(player);
+					console.log(player);
+				}
 			});
 		}
 
@@ -466,6 +372,139 @@ App.AddMatchEventController = Ember.Controller.extend({
 			alert("Pflichteingaben unvollständig!");
 		}
 	}
+});
+
+App.TestController = Ember.ObjectController.extend({
+	needs: ["club", "playerList"]
+	/*clubInfo: function() {
+		return App.Club.find("51af43fd1cf778493ccd0d3a");
+	}.property(),
+	teamsInfo: function() {
+		return App.Team.find();
+	}.property(),
+	players: function() {
+		return App.Player.find();
+	}.property(),
+	teamInfo: function() {
+		return this.get("players").get("teams.length");
+	}.property()*/
+});
+
+App.PlayerListController = Ember.ArrayController.extend({
+	needs: ["club"],
+	clubPlayerList: function() {
+		var clubId = this.get("controllers.club.id");
+		var playerList = this.filter(function(player) {
+			return player.get("club.id") == clubId;
+		});
+	 	playerList.forEach(function(player) {
+			console.log("player: " + player.get("firstName"));
+	 	});
+		return playerList;
+	}.property("@each.club.id"),
+	delete: function(player) {
+		//this.get("content").removeObject(player);
+		console.log(player);
+		player.deleteRecord();
+		App.store.commit();
+	},
+	edit: function(player) {
+		alert("edit");
+		this.transitionToRoute("player", player);
+	}
+});
+
+App.PlayerListNewController = Ember.ObjectController.extend({
+	needs: ["club"],
+	firstName: "",
+	lastName: "",
+	birthday: "",
+	createPlayer: function() {
+		var firstName = this.get("firstName");
+		var lastName = this.get("lastName");
+		var bday = new Date(this.get("birthday"));
+		console.log("bday: " + bday + " - " + this.get("birthday") + " - " + this.get("content"));
+		if (isValidText(firstName) && isValidText(lastName) && isValidBday(bday)) {
+			var club = this.get("controllers.club");
+			var clubId = club.get("id");
+			var player = Ember.Object.create({
+				firstName: firstName,
+				lastName: lastName,
+				birthday: bday,
+				club: App.Club.find(clubId)
+			});
+			var newPlayer = App.Player.createRecord(player);
+			newPlayer.transaction.commit();
+			//App.store.commit();
+
+			this.set("firstName", "");
+			this.set("lastName", "");
+			this.set("birthday", "");
+		}
+	}
+});
+
+App.TeamsController = Ember.ArrayController.extend({
+	needs: ["club", "playerList"],
+	clubBinding: "controllers.club",
+	clubTeams: function() {
+		var clubId = this.get("controllers.club.id");
+		console.log(this.get("content"));
+		var teams = this.filter(function(team) {
+			return (team.get("club.id") == clubId);
+		});
+		return teams;
+	}.property("each"),
+	clubPlayerList: function() {
+		console.log("calculate clubPlayerList");
+		var clubId = this.get("controllers.club.id");
+		var teamPlayerList = this.get("teamPlayerList");
+		var playerList = this.get("controllers.playerList").filter(function(player) {
+			console.log("player: " + !teamPlayerList.contains(player) + " - " + player.get("club.id") + " - " + clubId);
+			return (!teamPlayerList.contains(player) && player.get("club.id") == clubId);
+		});
+		console.log("playerList " + playerList);
+		return playerList;
+	}.property("@each.team.id", "teamPlayerList", "controllers.playerList"),
+	selectedTeamId: null,
+	selectedTeamName: function() {
+		return App.Team.find(this.get("selectedTeamId")).get("name");
+	}.property("selectedTeamId"),
+	teamPlayerList: function() {
+		console.log("calculate teamPlayerList");
+		var clubId = this.get("controllers.club.id");
+		var playerList = this.get("controllers.playerList");
+		var selectedTeamId = this.get("selectedTeamId");
+		var teamPlayerList = [];
+		playerList.forEach(function(player) {
+			console.log(player + " - " + player.get("team.id") + " - " + selectedTeamId);
+			var teamId = player.get("team.id");
+			console.log(player.get("club.id") + " - " + clubId + " - " + teamId + " - " + selectedTeamId);
+			if (player.get("club.id") == clubId) {
+				if (teamId && teamId == selectedTeamId) {
+					teamPlayerList.pushObject(player);
+				}
+			}
+		});
+		return teamPlayerList;
+	}.property("@each.team.id", "selectedTeamId", "clubPlayerList", "controllers.playerList", "content"),
+	valueChanged: function(value) {
+		this.set("selectedTeamId", value);
+	}
+});
+
+App.article = Ember.Object.create({
+	content: ["der", "die", "das"],
+	selectedArticle: null
+});
+
+App.TeamController = Ember.ObjectController.extend({});
+
+App.ClubController = Ember.ObjectController.extend({
+});
+
+App.session = Ember.Object.create({
+	user: null
 });
 
 App.LoginController = Ember.Controller.extend({

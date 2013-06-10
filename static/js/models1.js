@@ -11,8 +11,7 @@ window.Models = {};
 SOCKET = "/";
 
 App.store = DS.Store.create({
-	revision: 12,
-	adapter: DS.FixtureAdapter.extend({
+	/*adapter: DS.FixtureAdapter.extend({
 		queryFixtures: function (fixtures, query){
 
 			return fixtures.filter(function(fixture){
@@ -25,9 +24,11 @@ App.store = DS.Store.create({
 				return res;
 			});
 		}
-	})
+	})*/
+	adapter: 'App.SocketAdapter'
 });
 
+/*
 DS.FixtureAdapter.map('App.Club', {
 	teams: {embedded: 'load'}
 });
@@ -39,20 +40,21 @@ DS.FixtureAdapter.map('App.Team', {
 
 DS.FixtureAdapter.map('App.User', {
 	primaryKey: 'email'
-});
+});*/
 
 /*
 App.store = DS.Store.create({
 	revision: 12,
 	adapter: DS.SocketAdapter.create({})
 });
-*/
+
 DS.Model.reopen({
 	save: function () {
 		App.store.commit();
 		return this;
 	}
 });
+*/
 /*
 DS.SocketAdapter.map('App.Club', {
 	primaryKey: 'name'
@@ -73,9 +75,26 @@ App.Club = DS.Model.extend({
 
 App.Team = DS.Model.extend({
 	name: DS.attr("string"),
-	club: DS.belongsTo("App.Club", { embedded: true }),
+	club: DS.belongsTo("App.Club"),
 	matches: DS.hasMany("App.Match"),
-	playerList: DS.hasMany("App.Player")
+	players: DS.hasMany("App.Player")
+});
+
+App.Player = DS.Model.extend({
+	firstName: DS.attr("string"),
+	lastName: DS.attr("string"),
+	birthday: DS.attr("date"),
+	team: DS.belongsTo("App.Team"),
+	club: DS.belongsTo("App.Club"),
+	age: function() {
+		return age(this.get("birthday"));
+	}.property("birthday"),
+	fullName: function() {
+		return this.get("firstName") + " " + this.get("lastName");
+	}.property("lastName", "firstName"),
+	fullNameInverse: function() {
+		return this.get("lastName") + " " + this.get("firstName");
+	}.property("lastName", "firstName")
 });
 
 App.Match = DS.Model.extend({
@@ -97,6 +116,17 @@ App.MatchEvent = DS.Model.extend({
 	text: DS.attr("string"),
 	type: DS.attr("string"),
 	title: DS.attr("string")
+});
+
+App.User = DS.Model.extend({
+	firstName: DS.attr("string"),
+	lastName: DS.attr("string"),
+	email: DS.attr("string"),
+	password: DS.attr("string"),
+	role: DS.attr("string"),
+	fullName: function() {
+		return this.get('firstName') + " " + this.get('lastName');
+	}.property('firstName', 'lastName').cacheable()
 });
 
 App.MatchEvent.FIXTURES = [
@@ -248,18 +278,6 @@ App.Match.FIXTURES = [
 	}
 ];
 
-
-App.User = DS.Model.extend({
-	firstName: DS.attr("string"),
-	lastName: DS.attr("string"),
-	email: DS.attr("string"),
-	password: DS.attr("string"),
-	role: DS.attr("string"),
-	fullName: function() {
-		return this.get('firstName') + " " + this.get('lastName');
-	}.property('firstName', 'lastName').cacheable()
-});
-
 App.User.FIXTURES = [
 	{
 		id: 501,
@@ -270,23 +288,6 @@ App.User.FIXTURES = [
 		role: "moderator"
 	}
 ];
-
-App.Player = DS.Model.extend({
-	firstName: DS.attr("string"),
-	lastName: DS.attr("string"),
-	birthday: DS.attr("date"),
-	teams: DS.hasMany("App.Team"),
-	club: DS.belongsTo("App.Club"),
-	age: function() {
-		return age(this.get("birthday"));
-	}.property("birthday"),
-	fullName: function() {
-		return this.get("firstName") + " " + this.get("lastName");
-	}.property("lastName", "firstName"),
-	fullNameInverse: function() {
-		return this.get("lastName") + " " + this.get("firstName");
-	}.property("lastName", "firstName")
-});
 
 App.Player.FIXTURES = [
 	{

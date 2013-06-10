@@ -62,12 +62,13 @@ function age(date) {
 	if(months<0){months = 12+months; years--;}
 	if(years > 2000){years = years-2000}
 	if(years > 1900){years = years-1900}
-	console.log("Alter: " + day + " Tage; " + months + " Monate; " + years + " Jahre");
+	//console.log("Alter: " + day + " Tage; " + months + " Monate; " + years + " Jahre");
 	return years;
 }
 
 function isValidTime(date) {
 	var today = new Date();
+	console.log(date + " - " + date.getTime());
 	if (!isNaN(date.getTime()) && today.getTime() < date.getTime()) {
 		return true;
 	}
@@ -86,6 +87,7 @@ function isValidBday(date) {
 
 function isValidText(value) {
 	var reg = /[a-zA-ZüÜöÖäÄ]+/;
+	console.log(value);
 	if (reg.test(value)) {
 		return true;
 	}

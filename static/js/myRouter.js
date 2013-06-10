@@ -20,10 +20,11 @@ App.Router.map(function() {
 		this.route("new");
 		this.resource("player", { path: ":player_id"});
 	});
-	this.route("club");
+	this.resource("club");
 	this.route("profile");
 	this.route("login");
 	this.route("register");
+	this.resource("test");
 });
 
 App.AuthRoute = Ember.Route.extend({
@@ -38,10 +39,20 @@ App.AuthRoute = Ember.Route.extend({
 App.IndexRoute = Ember.Route.extend({});
 
 App.ApplicationRoute = Ember.Route.extend({
-	setupController: function() {
-		this.controllerFor("club").set("content", App.Club.find(101));
+	model: function() {
+		return App.Club.find("51af43fd1cf778493ccd0d3a");
+	},
+	setupController: function(controller, model) {
+		this.controllerFor("club").set("content", model);
+		var clubId = this.controllerFor("club").get("id");
 		this.controllerFor("teams").set("content", App.Team.find());
 		this.controllerFor("playerList").set("content", App.Player.find());
+	}
+});
+
+App.TestRoute = Ember.Route.extend({
+	model: function() {
+		return this.modelFor("application");
 	}
 });
 
@@ -51,30 +62,44 @@ App.MatchesRoute = Ember.Route.extend({
 	}
 });
 
+App.MatchRoute = Ember.Route.extend({
+	model: function(params) {
+
+	},
+	setupController: function(controller) {
+		var clubId = this.controllerFor("club").get("id");
+		controller.set('matchEvents', App.MatchEvent.find());
+	}
+});
+
+App.AddMatchEventRoute = App.AuthRoute.extend({
+	model: function(params) {
+		return App.Match.find(params.match_id);
+	}
+});
+
 App.PlayerListRoute = App.AuthRoute.extend({
 	model: function() {
-		//return this.controllerFor("playerList").get("content");
 		return App.Player.find();
 	}
 });
 
-App.ClubRoute = App.AuthRoute.extend({
-	model: function() {
-		//return this.controllerFor("club").get("content");
-		return App.Club.find(101);
-	}
+App.PlayerListNewRoute = App.AuthRoute.extend({
+	/*model: function() {
+		return App.Player.createRecord();
+	}*/
 });
 
 App.TeamsRoute = App.AuthRoute.extend({
 	model: function() {
-		//return this.controllerFor("teams").get("content");
 		return App.Team.find();
 	}
 });
 
 
-App.AddMatchEventRoute = App.AuthRoute.extend({
-	model: function(params) {
-		return App.Match.find(params.match_id);
+App.ClubRoute = App.AuthRoute.extend({
+	model: function() {
+		//return this.controllerFor("club").get("content");
+		return this.modelFor("application");
 	}
 });

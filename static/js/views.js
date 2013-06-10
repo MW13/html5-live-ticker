@@ -239,7 +239,7 @@ DragNDrop.Droppable = Ember.Mixin.create({
 });
 
 App.PlayerView = Ember.View.extend({
-	template: Ember.Handlebars.compile("{{view.content.firstName}} {{view.content.lastName}}, {{view.content.age}}"),
+	template: Ember.Handlebars.compile("{{view.content.fullNameInverse}}, {{view.content.age}}"),
 	tagName: "li",
 	classNames: ["listPlayer"]
 });
@@ -283,20 +283,52 @@ App.PlayerList = Ember.CollectionView.extend({
 	}),
 	dropBase: function(player) {
 		Ember.run.next(this, function() {
-			var teamsOfPlayer = player.get("teams");
-
+			//var teamsOfPlayer = player.get("teams");
+			var teamId = player.get("team.id");
 			var id = this.get("controller.selectedTeamId");
-			var team = App.Team.find(id);
+			console.log("!!!!!!!!!  teamId: " + teamId + " - " + id);
+			if (teamId != id) {
+				console.log("zum Team hinzufügen");
+				player.set("team", App.Team.find(id));
+				player.transaction.commit();
+			} else if (teamId == id) {
+				console.log("vom Team entfernen");
+				player.set("team", null);
+				player.transaction.commit();
+			}
 
+
+			//var team = App.Team.find(id);
+/*
 			if (!teamsOfPlayer.contains(team)) {
 				this.get("controller").propertyWillChange("content");
 				teamsOfPlayer.pushObject(team);
+				var transaction = App.store.transaction();
+				transaction.add(player);
+
+				//player.set("firstName", "Hans");
+				//player.set("team_ids", teamsOfPlayer.toArray());
+				//transaction.commit();
+				console.log(player.get("_id"));
+
+				//App.SocketAdapter.updateRecord(App.store, App.Player, player);
+
 				this.get("controller").propertyDidChange("content");
 			} else if (teamsOfPlayer.contains(team)) {
-				this.get("controller").propertyWillChange("content");
-				teamsOfPlayer.removeObject(App.Team.find(id));
-				this.get("controller").propertyDidChange("content");
+				//this.get("controller").propertyWillChange("content");
+				teamsOfPlayer.removeObject(team);
+				//this.get("controller").propertyDidChange("content");
 			}
+*/
+
+
+/*
+			debugger;
+			player.set("first_name", "Hans");
+			player.transaction.commit();
+			team.on('didLoad', function() {
+
+			});*/
 		});
 	}
 });
@@ -312,6 +344,7 @@ App.PlayerListClub = App.PlayerList.extend(DragNDrop.Droppable, {
 		var viewId = event.originalEvent.dataTransfer.getData('Text'),
 			view = Ember.View.views[viewId];
 		var player = view.get("content");
+		console.log("playerView: " + player);
 		if(!clubPlayerList.contains(player)) {
 			this.dropBase(player);
 		}
@@ -336,10 +369,44 @@ App.PlayerListTeam = App.PlayerList.extend(DragNDrop.Droppable, {
 });
 
 App.DateField = Ember.TextField.extend({
+	type: 'date',
+	date: function(key, date) {
+		if (date) {
+			this.set('value', date.toISOString().substring(0, 10));
+		} else {
+			var value = this.get('value');
+			if (value) {
+				date = new Date(value);
+			} else {
+				date = null;
+			}
+		}
+		return date;
+	}.property('value')
+});
+/*
+App.DateField = Ember.TextField.extend({
 	type: "date"
 	/*didInsertElement: function() {
 		this.datepicker.on("changeDate", function() {
 			this.trigger("change");
 		});
-	}*/
+	}
+});*/
+
+App.TimeField = Ember.TextField.extend({
+	type: 'time',
+	time: function(key, time) {
+		if (time) {
+			this.set('value', time.toISOString().substring(0, 5));
+		} else {
+			var value = this.get('value');
+			if (value) {
+				time = new Date(value);
+			} else {
+				time = null;
+			}
+		}
+		return time;
+	}.property('value')
 });

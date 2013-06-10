@@ -6,7 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 App = Ember.Application.create({
-	LOG_TRANSITIONS: true
+	LOG_TRANSITIONS: true,
+	VERSION: '1.0.0',
+	ready: function () {
+		console.log('App version: ' + App.VERSION + ' is ready.');
+	}
 });
 
 // var socket = io.connect();

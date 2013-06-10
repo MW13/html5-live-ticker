@@ -20,7 +20,21 @@ TYPES = {
 
 var ws;
 
-DS.SocketAdapter = DS.RESTAdapter.extend({
+App.SocketAdapter = DS.RESTAdapter.extend({
+	plurals: {
+		'club': 'clubs',
+		'match': 'matches',
+		'team': 'teams'
+	},
+	serializer: DS.RESTSerializer.extend({
+		serializeId: function(id) {
+			console.log("Id: " + id);
+			return id.toString();
+		},
+		primaryKey: function (type){
+			return '_id';
+		}
+	}),
 	socket: void 0,
 	requests: void 0,
 	generateUuid: function () {
@@ -51,7 +65,7 @@ DS.SocketAdapter = DS.RESTAdapter.extend({
 			userManager.transitionTo("moderator");
 			var controller = App.__container__.lookup("controller:Login");
 			controller.transitionToRoute("index");
-			return App.store.load(App.Moderator, user);
+			return App.store.load(App.User, user);
 		});
 		ws.on("delete", function (payload) {
 			var box, boxId;
@@ -65,6 +79,7 @@ DS.SocketAdapter = DS.RESTAdapter.extend({
 			return App.store.load(App.Box, payload.data[payload.type]);
 		});
 		ws.on("update", function (payload) {
+			console.log(payload);
 			return App.store.load(App.Box, payload.data[payload.type]);
 		});
 		ws.on("disconnect", function () {
@@ -210,7 +225,6 @@ DS.SocketAdapter = DS.RESTAdapter.extend({
 			requestType: TYPES.FIND_QUERY,
 			callback: function (req, res) {
 				return Ember.run(req.context, function () {
-					console.log(res.clubs.name);
 					return this.didFindQuery(req.store, req.type, res, req.recordArray);
 				});
 			}
@@ -222,11 +236,32 @@ DS.SocketAdapter = DS.RESTAdapter.extend({
 			type: type,
 			ids: this.serializeIds(ids),
 			owner: owner,
+			requestType: TYPES.FIND_MANY,
 			callback: function (req, res) {
 				return Ember.run(req.context, function () {
 					return this.didFindMany(req.store, req.type, res);
 				});
 			}
 		});
+	},
+	serializeIds: function(ids) {
+		var serializer = Ember.get(this, 'serializer');
+
+		return Ember.EnumerableUtils.map(ids, function(id) {
+			return serializer.serializeId(id);
+		});
+	},
+	rootForType: function(type) {
+		var serializer = Ember.get(this, 'serializer');
+		return serializer.rootForType(type);
+	},
+	pluralize: function(string) {
+		var serializer = Ember.get(this, 'serializer');
+		return serializer.pluralize(string);
+	},
+	sinceQuery: function(since) {
+		var query = {};
+		query[Ember.get(this, 'since')] = since;
+		return since ? query : null;
 	}
 });
