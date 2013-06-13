@@ -283,52 +283,9 @@ App.PlayerList = Ember.CollectionView.extend({
 	}),
 	dropBase: function(player) {
 		Ember.run.next(this, function() {
-			//var teamsOfPlayer = player.get("teams");
-			var teamId = player.get("team.id");
-			var id = this.get("controller.selectedTeamId");
-			console.log("!!!!!!!!!  teamId: " + teamId + " - " + id);
-			if (teamId != id) {
-				console.log("zum Team hinzufügen");
-				player.set("team", App.Team.find(id));
-				player.transaction.commit();
-			} else if (teamId == id) {
-				console.log("vom Team entfernen");
-				player.set("team", null);
-				player.transaction.commit();
-			}
+			console.log(this.get("controller"));
+			this.get("controller").send("dropPlayer", player);
 
-
-			//var team = App.Team.find(id);
-/*
-			if (!teamsOfPlayer.contains(team)) {
-				this.get("controller").propertyWillChange("content");
-				teamsOfPlayer.pushObject(team);
-				var transaction = App.store.transaction();
-				transaction.add(player);
-
-				//player.set("firstName", "Hans");
-				//player.set("team_ids", teamsOfPlayer.toArray());
-				//transaction.commit();
-				console.log(player.get("_id"));
-
-				//App.SocketAdapter.updateRecord(App.store, App.Player, player);
-
-				this.get("controller").propertyDidChange("content");
-			} else if (teamsOfPlayer.contains(team)) {
-				//this.get("controller").propertyWillChange("content");
-				teamsOfPlayer.removeObject(team);
-				//this.get("controller").propertyDidChange("content");
-			}
-*/
-
-
-/*
-			debugger;
-			player.set("first_name", "Hans");
-			player.transaction.commit();
-			team.on('didLoad', function() {
-
-			});*/
 		});
 	}
 });
@@ -346,6 +303,7 @@ App.PlayerListClub = App.PlayerList.extend(DragNDrop.Droppable, {
 		var player = view.get("content");
 		console.log("playerView: " + player);
 		if(!clubPlayerList.contains(player)) {
+			console.log("drop into Club");
 			this.dropBase(player);
 		}
 
@@ -361,6 +319,7 @@ App.PlayerListTeam = App.PlayerList.extend(DragNDrop.Droppable, {
 			view = Ember.View.views[viewId];
 		var player = view.get("content");
 		if(!teamPlayerList.contains(player)) {
+			console.log("drop into Team");
 			this.dropBase(player);
 		}
 

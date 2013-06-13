@@ -16,9 +16,9 @@ App.Router.map(function() {
 	this.resource("teams", function() {
 		this.resource("team", { path: ":team_id"});
 	});
-	this.resource("playerList", function() {
-		this.route("new");
+	this.resource("players", function() {
 		this.resource("player", { path: ":player_id"});
+		this.route("new");
 	});
 	this.resource("club");
 	this.route("profile");
@@ -45,8 +45,8 @@ App.ApplicationRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
 		this.controllerFor("club").set("content", model);
 		var clubId = this.controllerFor("club").get("id");
-		this.controllerFor("teams").set("content", App.Team.find());
-		this.controllerFor("playerList").set("content", App.Player.find());
+		//this.controllerFor("teams").set("content", App.Team.find());
+		//this.controllerFor("players").set("model", App.Player.find());
 	}
 });
 
@@ -62,44 +62,53 @@ App.MatchesRoute = Ember.Route.extend({
 	}
 });
 
+App.AddMatchRoute = Ember.Route.extend({
+	setupController: function() {
+		this.controllerFor("teams").set("model", App.Team.find());
+	}
+});
+
 App.MatchRoute = Ember.Route.extend({
 	model: function(params) {
-
+		return App.Match.find(params.match_id);
 	},
-	setupController: function(controller) {
-		var clubId = this.controllerFor("club").get("id");
-		controller.set('matchEvents', App.MatchEvent.find());
+	setupController: function(controller, model) {
+		this.controllerFor("match").set("model", model);
+		controller.set('matchEvents', App.MatchEvent.find({"match_id": model.get("id")}));
 	}
 });
 
 App.AddMatchEventRoute = App.AuthRoute.extend({
-	model: function(params) {
-		return App.Match.find(params.match_id);
+	model: function() {
+		return this.modelFor("match");
+	},
+	setupController: function(controller, model) {
+		controller.set("model", model);
+		this.controllerFor("teams").set("model", App.Team.find());
+		this.controllerFor("players").set("model", App.Player.find());
 	}
 });
 
-App.PlayerListRoute = App.AuthRoute.extend({
-	model: function() {
+App.PlayersRoute = App.AuthRoute.extend({
+	model: function(){
+		var clubId = this.modelFor("application").get("id");
 		return App.Player.find();
 	}
-});
-
-App.PlayerListNewRoute = App.AuthRoute.extend({
-	/*model: function() {
-		return App.Player.createRecord();
-	}*/
 });
 
 App.TeamsRoute = App.AuthRoute.extend({
 	model: function() {
 		return App.Team.find();
+	},
+	setupController: function(controller, model) {
+		this.controllerFor("teams").set("model", model);
+		this.controllerFor("players").set("model", App.Player.find());
 	}
 });
 
 
 App.ClubRoute = App.AuthRoute.extend({
 	model: function() {
-		//return this.controllerFor("club").get("content");
-		return this.modelFor("application");
+		return App.Club.find("51af43fd1cf778493ccd0d3a");
 	}
 });

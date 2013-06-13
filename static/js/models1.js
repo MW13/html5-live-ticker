@@ -10,7 +10,7 @@ window.Models = {};
 
 SOCKET = "/";
 
-App.store = DS.Store.create({
+App.Store = DS.Store.extend({
 	/*adapter: DS.FixtureAdapter.extend({
 		queryFixtures: function (fixtures, query){
 
@@ -25,8 +25,10 @@ App.store = DS.Store.create({
 			});
 		}
 	})*/
-	adapter: 'App.SocketAdapter'
+	adapter: App.SocketAdapter.create({})
 });
+
+App.store = App.Store.create({});
 
 /*
 DS.FixtureAdapter.map('App.Club', {

@@ -9,6 +9,7 @@ TYPES = {
 	CREATE: "CREATE",
 	//CREATES: "CREATES",
 	UPDATE: "UPDATE",
+	INCREMENT_MINUTE: "INCREMENT_MINUTE",
 	//UPDATES: "UPDATES",
 	DELETE: "DELETE",
 	//DELETES: "DELETES",
@@ -55,7 +56,7 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 			var request, uuid;
 			uuid = payload.uuid;
 			request = context.get("requests")[uuid];
-			if (payload.data) {
+			if (request && payload.data) {
 				return request.callback(request, payload.data);
 			}
 		});
@@ -79,8 +80,18 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 			return App.store.load(App.Box, payload.data[payload.type]);
 		});
 		ws.on("update", function (payload) {
-			console.log(payload);
-			return App.store.load(App.Box, payload.data[payload.type]);
+			var minute = payload.data.match.minute;
+			console.log("Minute: " + minute + " - " + payload.data.match["_id"]);
+
+			var match = App.Match.find(payload.data.match["_id"]);
+			Ember.run(this, function () {
+				//App.store.get("adapter").didUpdateRecord(App.store, payload.type, {"minute": 0}, payload);
+				match.reload();
+			});
+			/*match.on("didLoad", function() {
+				match.set("minute", minute);
+			});*/
+			//return App.store.load(App.Match, payload.data[payload.type]);
 		});
 		ws.on("disconnect", function () {
 		});
@@ -147,6 +158,19 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 			callback: function (req, res) {
 				return Ember.run(req.context, function () {
 					return this.didUpdateRecord(req.store, req.type, req.record, res);
+				});
+			}
+		});
+	},
+	incrementMinute: function (store, type, record) {
+		return this.send({
+			store: store,
+			type: type,
+			record: record,
+			requestType: TYPES.INCREMENT_MINUTE,
+			callback: function (req, res) {
+				return Ember.run(req.context, function () {
+					//return this.didUpdateRecord(req.store, req.type, req.record, res);
 				});
 			}
 		});

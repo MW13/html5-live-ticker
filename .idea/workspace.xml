@@ -4,20 +4,16 @@
     <list default="true" id="97cee91a-8857-4476-b8a9-4cc04d3bb980" name="Default" comment="">
       <change type="MOVED" beforePath="C:\Users\Markus\Programmierung\Bachelorarbeit\Liveticker\MyWebsite\static\js\SocketAdapter.js" afterPath="$PROJECT_DIR$/static/js/socketAdapter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app.js" afterPath="$PROJECT_DIR$/static/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/libs/ember-data-latest.js" afterPath="$PROJECT_DIR$/static/js/libs/ember-data-latest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/helper.js" afterPath="$PROJECT_DIR$/static/js/helper.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/index.html" afterPath="$PROJECT_DIR$/static/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/index_0.html" afterPath="$PROJECT_DIR$/static/index_0.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/models1.js" afterPath="$PROJECT_DIR$/static/js/models1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/myControllers.js" afterPath="$PROJECT_DIR$/static/js/myControllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/myRouter.js" afterPath="$PROJECT_DIR$/static/js/myRouter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/views.js" afterPath="$PROJECT_DIR$/static/js/views.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MyWebsite.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/index.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370734396662" ignored="false" />
+    <file path="/index.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371079984989" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/index.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368176055448" ignored="false" />
     <file path="/style.css" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370606057617" ignored="false" />
     <file path="/anmeldung.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366027411498" ignored="false" />
@@ -25,8 +21,8 @@
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/script/main.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366043668046" ignored="false" />
     <file path="/anmeldung.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366026839843" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/server.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368184499942" ignored="false" />
-    <file path="/server.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370687189423" ignored="false" />
-    <file path="/Mongo Console" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370733249479" ignored="false" />
+    <file path="/server.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371061910074" ignored="false" />
+    <file path="/Mongo Console" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371065090215" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/database.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366036182589" ignored="false" />
     <file path="/matchOverview.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366284458731" ignored="false" />
     <file path="/login.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366116130717" ignored="false" />
@@ -35,14 +31,14 @@
     <file path="/login.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366116577796" ignored="false" />
     <file path="/navigation.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366116308748" ignored="false" />
     <file path="/createMatch.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366116560899" ignored="false" />
-    <file path="/app.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370428587287" ignored="false" />
+    <file path="/app.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370902860493" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/js/app.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368176072979" ignored="false" />
     <file path="/verein.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366368795548" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/js/router.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368030121425" ignored="false" />
     <file path="/matchList.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366369440836" ignored="false" />
     <file path="/navigationView.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1366369512511" ignored="false" />
     <file path="/models.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368617575791" ignored="false" />
-    <file path="/views.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370728705606" ignored="false" />
+    <file path="/views.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370994159430" ignored="false" />
     <file path="/controllers.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368733100237" ignored="false" />
     <file path="/router.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368733345468" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/js/views.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1367943929804" ignored="false" />
@@ -56,11 +52,11 @@
     <file path="/app_Example.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368174452282" ignored="false" />
     <file path="/appExample.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368175377020" ignored="false" />
     <file path="/app3.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368175945679" ignored="false" />
-    <file path="/models1.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370686266513" ignored="false" />
+    <file path="/models1.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371058325223" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/js/models1.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368178584765" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server Project/server/www/data/clubs.json" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368184445394" ignored="false" />
-    <file path="$PROJECT_DIR$/../Node Server/static/index.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370362802483" ignored="false" />
-    <file path="$PROJECT_DIR$/../Node Server/server.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370724731102" ignored="false" />
+    <file path="$PROJECT_DIR$/../Node Server/static/index.html" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371077269632" ignored="false" />
+    <file path="$PROJECT_DIR$/../Node Server/server.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371061935753" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/static/css/style.css" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368363262715" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/static/js/models1.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370447350589" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/static/js/controllers.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368528075355" ignored="false" />
@@ -70,7 +66,7 @@
     <file path="$PROJECT_DIR$/../Node Server/static/js/libs/ember-data-latest.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368528329493" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/models/models.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368617575791" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/app.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368617790810" ignored="false" />
-    <file path="/Dummy.txt" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370878058168" ignored="false" />
+    <file path="/Dummy.txt" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371135344611" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/static/js/emberApp.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368628723344" ignored="false" />
     <file path="/emberApp.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368627215046" ignored="false" />
     <file path="/SocketAdapter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368711426499" ignored="false" />
@@ -85,16 +81,16 @@
     <file path="/package.json" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368717611082" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/routes/clubs.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368730081288" ignored="false" />
     <file path="/clubs.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1368730051172" ignored="false" />
-    <file path="/myRouter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370734581914" ignored="false" />
-    <file path="/myControllers.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370732833321" ignored="false" />
+    <file path="/myRouter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371077196434" ignored="false" />
+    <file path="/myControllers.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371135952452" ignored="false" />
     <file path="/dummy.xml" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1369598337061" ignored="false" />
     <file path="/helper.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370729052955" ignored="false" />
     <file path="$PROJECT_DIR$/../untitledNew/.idea/workspace.xml" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1369827192076" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/.idea/workspace.xml" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1369870853735" ignored="false" />
     <file path="/bootstrap.css" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370018529758" ignored="false" />
     <file path="/textGenerator.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370043932819" ignored="false" />
-    <file path="/socketAdapter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370645670274" ignored="false" />
-    <file path="$PROJECT_DIR$/../Node Server/static/js/socketAdapter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370645608385" ignored="false" />
+    <file path="/socketAdapter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371064765289" ignored="false" />
+    <file path="$PROJECT_DIR$/../Node Server/static/js/socketAdapter.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1371059411696" ignored="false" />
     <file path="$PROJECT_DIR$/../Node Server/node_modules/mongodb/node_modules/bson/lib/bson/objectid.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370477365768" ignored="false" />
     <file path="/objectid.js" changelist="97cee91a-8857-4476-b8a9-4cc04d3bb980" time="1370476820283" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -165,16 +161,25 @@
       <file leaf-file-name="models1.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/models1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="26" selection-start="2130" selection-end="2134" vertical-scroll-proportion="0.0">
+            <state line="102" column="8" selection-start="2057" selection-end="2061" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myRouter.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="myRouter.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/myRouter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.16991964">
+            <state line="75" column="8" selection-start="1846" selection-end="1846" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="26" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,34 +188,7 @@
       <file leaf-file-name="myControllers.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/myControllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="16" selection-start="5756" selection-end="5756" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="16" selection-start="2108" selection-end="2108" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="42" selection-start="3540" selection-end="3545" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="socketAdapter.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/socketAdapter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="27" selection-start="3581" selection-end="3581" vertical-scroll-proportion="0.0">
+            <state line="195" column="57" selection-start="6295" selection-end="6295" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -219,43 +197,79 @@
       <file leaf-file-name="views.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/views.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="50" selection-start="1978" selection-end="1991" vertical-scroll-proportion="0.0">
+            <state line="95" column="56" selection-start="2797" selection-end="2816" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1370728889192" expanded="false" signature="3928:3962" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="4137:4186" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="4357:4406" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="4592:4641" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="4689:4738" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="4963:5012" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="5060:5109" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="5343:5392" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="5763:5812" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="6082:6131" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="6467:6516" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="6543:6592" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="6777:6826" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="7120:7154" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="7331:7380" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="7552:7601" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="7787:7836" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="7884:7933" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="8158:8207" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="8255:8304" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="8538:8587" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="8958:9007" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="9277:9326" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="9662:9711" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="9738:9787" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="9972:10021" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="10323:10359" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="10406:10455" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="10698:10747" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="10920:10969" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="11145:11194" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="11368:11417" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="11594:11643" placeholder="..." />
-                <marker date="1370728889192" expanded="false" signature="11820:11869" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="3928:3962" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="4137:4186" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="4357:4406" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="4592:4641" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="4689:4738" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="4963:5012" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="5060:5109" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="5343:5392" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="5763:5812" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="6082:6131" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="6467:6516" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="6543:6592" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="6777:6826" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="7120:7154" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="7331:7380" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="7552:7601" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="7787:7836" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="7884:7933" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="8158:8207" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="8255:8304" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="8538:8587" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="8958:9007" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="9277:9326" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="9662:9711" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="9738:9787" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="9972:10021" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="10323:10359" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="10406:10455" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="10698:10747" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="10920:10969" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="11145:11194" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="11368:11417" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="11594:11643" placeholder="..." />
+                <marker date="1371035839943" expanded="false" signature="11820:11869" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ember-data-0.13.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/libs/ember-data-0.13.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7520" column="45" selection-start="223236" selection-end="223242" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="233" column="48" selection-start="6992" selection-end="6992" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="1" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="socketAdapter.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/socketAdapter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="16" selection-start="1168" selection-end="1172" vertical-scroll-proportion="0.46653542">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -278,22 +292,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/static/js/libs/ember-data-latest.js" />
-        <option value="$PROJECT_DIR$/static/js/app.js" />
         <option value="$PROJECT_DIR$/static/js/libs/handlebars.js" />
         <option value="localhost:8080/js/myControllers.js" />
-        <option value="localhost:8080/js/socketAdapter.js" />
-        <option value="localhost:8080/js/libs/ember-1.0.0-rc.5.js" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="localhost:8080/js/libs/ember-data-0.13.js" />
         <option value="localhost:8080/js/views.js" />
-        <option value="$PROJECT_DIR$/static/js/socketAdapter.js" />
-        <option value="$PROJECT_DIR$/static/js/models1.js" />
-        <option value="$PROJECT_DIR$/static/js/views.js" />
         <option value="$PROJECT_DIR$/static/js/helper.js" />
-        <option value="$PROJECT_DIR$/static/js/myControllers.js" />
-        <option value="$PROJECT_DIR$/static/index.html" />
+        <option value="$PROJECT_DIR$/static/js/app.js" />
+        <option value="localhost:8080/js/libs/ember-1.0.0-rc.5.js" />
+        <option value="$PROJECT_DIR$/static/js/libs/ember-data-0.13.js" />
+        <option value="$PROJECT_DIR$/static/js/views.js" />
+        <option value="localhost:8080/js/socketAdapter.js" />
+        <option value="$PROJECT_DIR$/static/js/models1.js" />
+        <option value="$PROJECT_DIR$/static/js/socketAdapter.js" />
         <option value="$PROJECT_DIR$/static/js/myRouter.js" />
+        <option value="$PROJECT_DIR$/static/index.html" />
+        <option value="$PROJECT_DIR$/static/js/myControllers.js" />
       </list>
     </option>
   </component>
@@ -375,6 +389,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -485,7 +500,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -698,14 +712,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14460512" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37931034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.378198" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30211818" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -717,13 +732,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12229837" sideWeight="0.6008919" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17609392" sideWeight="0.62068963" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17609392" sideWeight="0.62180203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14571746" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -800,46 +814,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/oldSocketAdapter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="33" selection-start="5292" selection-end="5292" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="http://localhost:8080/js/myControllers.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/libs/ember-data-0.13.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7458" column="2" selection-start="221258" selection-end="221258" vertical-scroll-proportion="-6.56" />
-      </provider>
-    </entry>
     <entry file="http://localhost:8080/js/libs/ember-data-0.13.js">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:8080/js/socketAdapter.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:8080/js/libs/ember-1.0.0-rc.5.js">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/libs/ember-1.0.0-rc.5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2486" column="52" selection-start="67146" selection-end="67146" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="http://localhost:8080/js/views.js">
@@ -847,86 +824,129 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/socketAdapter.js">
+    <entry file="file://$PROJECT_DIR$/static/js/helper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="27" selection-start="3581" selection-end="3581" vertical-scroll-proportion="0.0">
+        <state line="89" column="16" selection-start="2108" selection-end="2108" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="26" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/helper.js">
+    <entry file="http://localhost:8080/js/libs/ember-1.0.0-rc.5.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="16" selection-start="2108" selection-end="2108" vertical-scroll-proportion="0.0">
+        <state line="83" column="1" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/libs/ember-1.0.0-rc.5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9695" column="33" selection-start="267676" selection-end="267676" vertical-scroll-proportion="0.3653846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:8080/js/socketAdapter.js">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="388" column="43" selection-start="6609" selection-end="6616" vertical-scroll-proportion="0.33208254">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/libs/ember-data-0.13.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7520" column="45" selection-start="223236" selection-end="223242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/models1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="26" selection-start="2130" selection-end="2134" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/views.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="50" selection-start="1978" selection-end="1991" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1370728889192" expanded="false" signature="3928:3962" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="4137:4186" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="4357:4406" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="4592:4641" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="4689:4738" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="4963:5012" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="5060:5109" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="5343:5392" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="5763:5812" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="6082:6131" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="6467:6516" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="6543:6592" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="6777:6826" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="7120:7154" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="7331:7380" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="7552:7601" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="7787:7836" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="7884:7933" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="8158:8207" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="8255:8304" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="8538:8587" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="8958:9007" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="9277:9326" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="9662:9711" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="9738:9787" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="9972:10021" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="10323:10359" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="10406:10455" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="10698:10747" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="10920:10969" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="11145:11194" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="11368:11417" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="11594:11643" placeholder="..." />
-            <marker date="1370728889192" expanded="false" signature="11820:11869" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/myControllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="16" selection-start="5756" selection-end="5756" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="42" selection-start="3540" selection-end="3545" vertical-scroll-proportion="0.0">
+        <state line="102" column="8" selection-start="2057" selection-end="2061" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/myRouter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1613" selection-end="1613" vertical-scroll-proportion="0.16991964">
+        <state line="75" column="8" selection-start="1846" selection-end="1846" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/views.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="56" selection-start="2797" selection-end="2816" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1371035839943" expanded="false" signature="3928:3962" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="4137:4186" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="4357:4406" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="4592:4641" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="4689:4738" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="4963:5012" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="5060:5109" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="5343:5392" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="5763:5812" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="6082:6131" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="6467:6516" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="6543:6592" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="6777:6826" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="7120:7154" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="7331:7380" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="7552:7601" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="7787:7836" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="7884:7933" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="8158:8207" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="8255:8304" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="8538:8587" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="8958:9007" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="9277:9326" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="9662:9711" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="9738:9787" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="9972:10021" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="10323:10359" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="10406:10455" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="10698:10747" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="10920:10969" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="11145:11194" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="11368:11417" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="11594:11643" placeholder="..." />
+            <marker date="1371035839943" expanded="false" signature="11820:11869" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="233" column="48" selection-start="6992" selection-end="6992" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/myControllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="195" column="57" selection-start="6295" selection-end="6295" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/socketAdapter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="16" selection-start="1168" selection-end="1172" vertical-scroll-proportion="0.46653542">
           <folding />
         </state>
       </provider>

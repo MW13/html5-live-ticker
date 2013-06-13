@@ -31,9 +31,10 @@
 				<ul class="nav pull-left">
 					<li>{{#linkTo "matches"}}Spieleübersicht{{/linkTo}}</li>
 					<li>{{#linkTo "test"}}Test{{/linkTo}}</li>
+					<li>{{#linkTo "players"}}Spieler{{/linkTo}}</li>
 					{{#with App.session}}
 						{{#if user}}
-							<li>{{#linkTo "playerList"}}Spielerpool{{/linkTo}}</li>
+
 							<li>{{#linkTo "teams"}}Mannschaften{{/linkTo}}</li>
 							<li>{{#linkTo "club"}}Verein{{/linkTo}}</li>
 						{{/if}}
@@ -149,7 +150,7 @@
 <script type="text/x-handlebars" data-template-name="match">
 	{{outlet}}
 
-	{{controller}}{{content}}{{model}}
+	{{controller}}{{content}}
 	{{render "matchOverview" this}}
 
 	{{#with App.session}}
@@ -164,7 +165,7 @@
 		{{/if}}
 	{{/with}}
 
-	<br>Spielfortschritt <progress value="40" max="100"></progress>
+	<br>Spielfortschritt {{view Ember.View type="progress" valueBinding="minute" max="90"}}<progress valueBinding="minute" max="90"></progress>
 	{{minute}}. Minute<br>{{kickoff}}
 
 	<ul>
@@ -226,11 +227,11 @@
 				<div class="span2">
 					<h4>Verein:</h4>
 					{{view App.ClubRadioButton titleBinding="controllers.club.name" checked="true"}}
-					{{view App.ClubRadioButton titleBinding="controllers.match.opponent"}}
+					{{view App.ClubRadioButton titleBinding="model.opponent"}}
 				</div>
 				<div class="span2">
-					<h4>Torschütze:</h4>
-					{{#if teamPlayerList}}
+					<h4>Torschütze:</h4>{{controller.teamPlayerList.length}}{{controller.isOwnClub}}
+					{{#if controller.isOwnClub}}
 						{{view Ember.Select contentBinding="teamPlayerList"
 							optionValuePath="content"
 							optionLabelPath="content.fullNameInverse"
@@ -336,7 +337,7 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="matchOverview">
-	<div class="matchOverview">{{content}}
+	<div class="matchOverview">
 		<h4>{{teamHome}} - {{teamAway}}</h4>
 		<h1>{{goalsHome}} : {{goalsAway}}</h1>
 		<p>{{date}} {{team.name}} {{time}}</p>
@@ -344,27 +345,26 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="playerListElement">
-	<table>
-		<tr>
+	<table><tr>
 			<td class="name">{{view.content.fullNameInverse}}, {{view.content.age}} - {{view.content.id}}</td>
 			<td class="edit"><img class='listImage' {{action edit view.content bubbles=false}} src='images/edit.png'></td>
 			<td class="delete"><img class='listImage' {{action delete view.content bubbles=false}} src='images/cancel.png'></td>
-		</tr>
-	</table>
+	</tr></table>
 </script>
 
-<script type="text/x-handlebars" data-template-name="playerList">
+<script type="text/x-handlebars" data-template-name="players">
 	<div class="container">
 		<div class="row">
 			<div class="span12 centered">
-				<h3>Spielerpool</h3>
-				{{#linkTo "playerList.new"}}<button>Spieler anlegen</button>{{/linkTo}}
-				{{this.content.length}}
+				<h3>Spieler</h3>
+				{{#linkTo "players.new"}}<button>Spieler anlegen</button>{{/linkTo}}
+				{{this.content.length}} {{clubPlayerList}}
 			</div>
 		</div>
 		<div class="row">
 			<div class="span6">
 				{{view App.PlayerListExtended contentBinding="clubPlayerList" id="clubPlayerList"}}
+
 			</div>
 			<div class="span6 playerDetail">
 				{{outlet}}
@@ -376,14 +376,15 @@
 <script type="text/x-handlebars" data-template-name="player">
 	<div class="playerEdit">
 		<h5>Spieler anpassen</h5>
-		<label>Vorname:<br>{{view Ember.TextField valueBinding="content.firstName"}}</label>
-		<label>Nachname:<br>{{view Ember.TextField valueBinding="content.lastName"}}</label>
-		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="content.lastName"}}</label>
-		<label>Geburtstag:<br>{{view App.DateField valueBinding="content.birthday"}}</label>
+		<label>Vorname:<br>{{view Ember.TextField valueBinding="controller.firstName"}}</label>
+		<label>Nachname:<br>{{view Ember.TextField valueBinding="controller.lastName"}}</label>
+		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="controller.lastName"}}</label>
+		<label>Geburtstag:<br>{{view App.DateField valueBinding="controller.birthday"}}</label>
+		<button {{action savePlayer}}>Speichern</button>
 	</div>
 </script>
 
-<script type="text/x-handlebars" data-template-name="playerList/new">
+<script type="text/x-handlebars" data-template-name="players/new">
 	<div class="playerNew">
 		<h5>Neuer Spieler</h5>
 		<label>Vorname:<br>{{view Ember.TextField valueBinding="controller.firstName"}}</label>
@@ -399,7 +400,6 @@
 		<div class="row">
 			<div class="span12">
 				<h3>Mannschaften</h3>
-
 				<label>Mannschaft: {{view App.MySelect viewName="select" contentBinding="content"
 					optionValuePath="content.id"
 					optionLabelPath="content.name"
@@ -419,7 +419,7 @@
 				{{/if}}
 			</div>
 			<div class="span4">
-
+				{{outlet}}
 			</div>
 		</div>
 	</div>
@@ -431,7 +431,7 @@
 	{{/each}}
 
 	<div>
-		<div>{{outlet}}</div>
+		<div></div>
 		<div></div>
 	</div>
 
@@ -452,8 +452,8 @@
 	Spieler: {{player.fullName}}, Spielername: {{player.age}}<br>
 	{{/each}}
 
-	{{controllers.playerList.content.length}}<br>
-	{{#each player in controllers.playerList.content}}
+	{{controllers.players.content.length}}<br>
+	{{#each player in controllers.players.content}}
 		{{player}} {{player.id}} {{player._id}}
 	{{/each}}
 </script>
@@ -464,14 +464,24 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="club">
-	<h3>Verein {{App.article.selectedArticle}} {{content.name}}</h3>
+	<div class="container">
+		<div class="row">
+			<div class="span12 centered">
+				<h3>Verein {{App.article.selectedArticle}} {{controller.name}}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<label>Vereinsname:<br>{{view Ember.TextField valueBinding="controller.name"}}</label>
+				<label>Artikel:<br>{{view Ember.Select contentBinding="App.article.content" valueBinding="App.article.selectedArticle"}}</label>
+				<label>Kürzel:<br>{{view Ember.TextField valueBinding="controller.short"}}</label>
+				<button {{action saveClub}}>Speichern</button>
+			</div>
+			<div class="span6">
 
-	<label>Vereinsname:<br>{{view Ember.TextField type="text" valueBinding="content.name" }}</label>
-	<label>Kürzel:<br>
-		{{view Ember.Select contentBinding="App.article.content" valueBinding="App.article.selectedArticle"}}
-	</label>
-		{{view Ember.TextField type="text"}}
-
+			</div>
+		</div>
+	</div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="profile">
