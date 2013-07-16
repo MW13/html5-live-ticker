@@ -9,12 +9,12 @@ var userManager = Ember.StateManager.create({
 	enableLogging: true,
 	initialState: "loggedOut",
 	loggedOut: Ember.State.create({
-		enter: function(stateManager){
+		enter: function (stateManager) {
 			console.log("entering the loggedOut state.")
 		}
 	}),
 	loggedIn: Ember.State.create({
-		enter: function(stateManager){
+		enter: function (stateManager) {
 			console.log("entering the loggedIn state.");
 		}
 	})

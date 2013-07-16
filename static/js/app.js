@@ -15,11 +15,11 @@ window.App = Ember.Application.create({
 
 // var socket = io.connect();
 /*
-socket.on('server_message', function(data){
-	alert(data);
-});
+ socket.on('server_message', function(data){
+ alert(data);
+ });
 
 
-socket.on("loginResponse", function(data) {
-	this.transitionToRoute("index");
-});*/
+ socket.on("loginResponse", function(data) {
+ this.transitionToRoute("index");
+ });*/

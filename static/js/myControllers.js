@@ -7,7 +7,7 @@
  */
 App.ApplicationController = Ember.Controller.extend({
 	needs: ["club"],
-	logout: function() {
+	logout: function () {
 		this.transitionToRoute("index");
 		App.session.set("user", null);
 		localStorage.userId = null;
@@ -16,7 +16,7 @@ App.ApplicationController = Ember.Controller.extend({
 		localStorage.email = null;
 		localStorage.role = null;
 	},
-	init: function() {
+	init: function () {
 		App.session.set("user", {
 			id: localStorage.userId,
 			firstName: localStorage.firstName,
@@ -30,8 +30,8 @@ App.ApplicationController = Ember.Controller.extend({
 App.MatchesController = Ember.ArrayController.extend({
 	needs: ["club"],
 	clubBinding: 'controllers.club',
-	finishedMatches: function() {
-		var matches = this.filter(function(match) {
+	finishedMatches: function () {
+		var matches = this.filter(function (match) {
 			return match.get('state') == "finished";
 		});
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
@@ -40,8 +40,8 @@ App.MatchesController = Ember.ArrayController.extend({
 			content: matches
 		});
 	}.property('@each.state', '@each.kickoff'),
-	liveMatches: function() {
-		var matches = this.filter(function(match) {
+	liveMatches: function () {
+		var matches = this.filter(function (match) {
 			return match.get('state') == "live";
 		});
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
@@ -50,8 +50,8 @@ App.MatchesController = Ember.ArrayController.extend({
 			content: matches
 		});
 	}.property('@each.state', '@each.kickoff'),
-	comingMatches: function() {
-		var matches = this.filter(function(match) {
+	comingMatches: function () {
+		var matches = this.filter(function (match) {
 			return match.get('state') == "coming";
 		});
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
@@ -64,45 +64,45 @@ App.MatchesController = Ember.ArrayController.extend({
 
 App.MatchOverviewController = Ember.ObjectController.extend({
 	needs: ["club"],
-	teamHome: function() {
-		if(this.get("content.homeAdvantage")) {
+	teamHome: function () {
+		if (this.get("content.homeAdvantage")) {
 			return this.get("controllers.club.content.name");
 		} else {
 			return this.get("content.opponent");
 		}
 	}.property("content.homeAdvantage", "content.opponent"),
-	teamAway: function() {
-		if(this.get("content.homeAdvantage")) {
+	teamAway: function () {
+		if (this.get("content.homeAdvantage")) {
 			return this.get("content.opponent");
 		} else {
 			return this.get("controllers.club.content.name");
 		}
 	}.property("content.homeAdvantage", "content.opponent"),
-	goalsHome: function() {
-		if(this.get("content.homeAdvantage")) {
+	goalsHome: function () {
+		if (this.get("content.homeAdvantage")) {
 			return this.get("content.ownGoals");
 		} else {
 			return this.get("content.opponentGoals");
 		}
 	}.property("content.homeAdvantage", "content.ownGoals", "content.opponentGoals"),
-	goalsAway: function() {
-		if(this.get("content.homeAdvantage")) {
+	goalsAway: function () {
+		if (this.get("content.homeAdvantage")) {
 			return this.get("content.opponentGoals");
 		} else {
 			return this.get("content.ownGoals");
 		}
 	}.property("content.homeAdvantage", "content.ownGoals", "content.opponentGoals"),
-	time: function() {
+	time: function () {
 		var kickoff = new Date();
 		kickoff.setTime(this.get("content.kickoff"));
 		return time(kickoff);
 	}.property("content.kickoff"),
-	date: function() {
+	date: function () {
 		var kickoff = new Date();
 		kickoff.setTime(this.get("content.kickoff"));
 		return date(kickoff);
 	}.property("content.kickoff"),
-	teamGroup: function() {
+	teamGroup: function () {
 		var team = this.get("content.team");
 		var name = team.get("name");
 		return name;
@@ -127,7 +127,8 @@ App.matchEvent = Ember.Object.create({
 });
 
 App.creations = Ember.Object.create({
-	content: [{id: "dribbling", name: "Dribbling", type: "solo"},
+	content: [
+		{id: "dribbling", name: "Dribbling", type: "solo"},
 		{id: "easy_goal", name: "Abstauber", type: "solo"},
 		{id: "corner", name: "Eckstoß", type: "solo"},
 		{id: "penalty", name: "Elfmeter", type: "solo"},
@@ -140,15 +141,18 @@ App.creations = Ember.Object.create({
 		{id: "cross_low", name: "Flanke (flach)", type: "assist"},
 		{id: "free_kick_short", name: "Freistoß (Ablage)", type: "assist"},
 		{id: "free_kick_cross", name: "Freistoß (Flanke)", type: "assist"},
-		{id: "cross_kick", name: "Querpass", type: "assist"}]
+		{id: "cross_kick", name: "Querpass", type: "assist"}
+	]
 });
 
 App.bodyParts = Ember.Object.create({
-	content: [{id: "head", name: "Kopf", types: ["easy_goal", "lob", "corner_cross", "cross_high", "free_kick_cross"]},
+	content: [
+		{id: "head", name: "Kopf", types: ["easy_goal", "lob", "corner_cross", "cross_high", "free_kick_cross"]},
 		{id: "foot_left", name: "Fuß (links)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
 		{id: "foot_right", name: "Fuß (rechts)", types: ["dribbling", "easy_goal", "corner", "penalty", "long_shot", "free_kick", "lob", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_short", "free_kick_cross", "cross_kick"]},
 		{id: "heel", name: "Hacke", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "cross_low", "free_kick_cross", "cross_kick"]},
-		{id: "knee", name: "Knie", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "free_kick_cross", "cross_kick"]}]
+		{id: "knee", name: "Knie", types: ["easy_goal", "double_pass", "corner_cross", "cross_high", "free_kick_cross", "cross_kick"]}
+	]
 });
 
 App.goal = Ember.Object.create({
@@ -178,44 +182,44 @@ App.assist = Ember.Object.create({
  */
 App.MatchController = Ember.ObjectController.extend({
 	timer: null,
-	notStarted: function() {
+	notStarted: function () {
 		return (this.get("state") == "coming");
 	}.property("state"),
-	started: function() {
+	started: function () {
 		return (this.get("state") == "live");
 	}.property("state"),
-	matchEvents: (function() {
+	matchEvents: (function () {
 		var matchId = this.get("content.id");
 		return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
 			sortProperties: ['minute'],
 			sortAscending: false,
-			content: App.MatchEvent.filter(function(matchEvent) {
+			content: App.MatchEvent.filter(function (matchEvent) {
 				return matchEvent.get("match.id") == matchId;
 			})
 		});
 	}).property('content.matchEvents', "App.MatchEvent"),
-	startMatch: function() {
+	startMatch: function () {
 		this.set("state", "live");
 		this.get("transaction").commit();
 		console.log("this: " + this.get("store").get("adapter"));
 		//if (this.get("content.id")) {
-		 this.get("store").get("adapter").incrementMinute(this.get("store"), "App.Match", this.get("content"));
+		this.get("store").get("adapter").incrementMinute(this.get("store"), "App.Match", this.get("content"));
 		//}
 		//ws.emit("startMatch", this.get("id"));
 		/*var self = this;
-		this.set("timer", setInterval(function() {
+		 this.set("timer", setInterval(function() {
 
-			self.set("minute", self.incrementProperty("minute", 1) );
-			console.log(self.get("minute") + ". Minute - " + self.get("state"));
-		}, 600) );*/
+		 self.set("minute", self.incrementProperty("minute", 1) );
+		 console.log(self.get("minute") + ". Minute - " + self.get("state"));
+		 }, 600) );*/
 	},
-	pauseMatch: function() {
+	pauseMatch: function () {
 		//clearInterval(this.get("timer"));
 	},
-	stopMatch: function() {
+	stopMatch: function () {
 		/*
-		console.log("timer: " + this.get("timer"));
-		clearInterval(this.get("timer"));*/
+		 console.log("timer: " + this.get("timer"));
+		 clearInterval(this.get("timer"));*/
 		this.set("state", "finished");
 		this.get("transaction").commit();
 		ws.emit("stopMatch", this.get("id"));
@@ -230,7 +234,7 @@ App.AddMatchController = Ember.Controller.extend({
 	time: "",
 	place: "",
 	teamId: 0,
-	addMatch: function() {
+	addMatch: function () {
 		var homeAdvantage = this.get("homeAdvantage");
 		var opponent = this.get("opponent");
 		var date = this.get("date");
@@ -269,14 +273,15 @@ App.AddMatchEventController = Ember.Controller.extend({
 	needs: ["club"],
 	scorerWithNumber: false,
 	assistWithNumber: false,
-	isOwnClub: function() {
+	isOwnClub: function () {
 		return App.matchEvent.get("club") == this.get("controllers.club.name");
 	}.property("controllers.club.name", "App.matchEvent.club"),
-	valueChanged: function(value) {
+	valueChanged: function (value) {
 		/*var matchEvent = App.MatchEvent2.create({});
 		 matchEvent.club = this.get("clubReference");*/
-		switch(value) {
-			case "Tor": {
+		switch (value) {
+			case "Tor":
+			{
 				App.matchEventTypes.set("goal", true);
 				App.matchEvent.set("club", this.get("controllers.club.name"));
 				App.goal.set("scorer", null);
@@ -286,85 +291,88 @@ App.AddMatchEventController = Ember.Controller.extend({
 				this.set("withAssist", false);
 				break;
 			}
-			default: {
+			default:
+			{
 				App.matchEventTypes.set("goal", false);
 			}
 		}
 	},
-	selectedClubChanged: function(clubName) {
+	selectedClubChanged: function (clubName) {
 		App.goal.set("scorer", null);
 		App.goal.set("scorerNr", 0);
 		App.assist.set("assist", null);
 		App.assist.set("assistNr", 0);
 		App.matchEvent.set("club", clubName);
 	},
-	teamPlayerList: function() {
+	teamPlayerList: function () {
 		var playerList = [];
 		//console.log(App.matchEvent.club + " == " + this.get("controllers.club.name"));
 		/*if(App.matchEvent.club == this.get("controllers.club.name")) {
-			console.log("calculate teamPlayerList");
-			var clubPlayerList = this.get("controllers.players");
-			var match = this.get("controllers.match");
-			var selectedTeam = match.get("team");
-			console.log("team: " + selectedTeam);
-			var clubId = this.get("controllers.club.id");
-			clubPlayerList.forEach(function(player) {
-				var teamId = player.get("team.id");
-				var playerClubId = player.get("team.id");
-				if (playerClubId == clubId && teamId == selectedTeam.get("id")) {
-					playerList.pushObject(player);
-					console.log(player);
-				}
-			});
-		}*/
+		 console.log("calculate teamPlayerList");
+		 var clubPlayerList = this.get("controllers.players");
+		 var match = this.get("controllers.match");
+		 var selectedTeam = match.get("team");
+		 console.log("team: " + selectedTeam);
+		 var clubId = this.get("controllers.club.id");
+		 clubPlayerList.forEach(function(player) {
+		 var teamId = player.get("team.id");
+		 var playerClubId = player.get("team.id");
+		 if (playerClubId == clubId && teamId == selectedTeam.get("id")) {
+		 playerList.pushObject(player);
+		 console.log(player);
+		 }
+		 });
+		 }*/
 		var teamId = this.get("content.team.id");
 		console.log("teamId: " + teamId);
-		var playerList = App.Player.filter(function(player) {
+		var playerList = App.Player.filter(function (player) {
 			return teamId && player.get("team.id") == teamId;
 		});
 
 		return playerList;
 	}.property("@each", "selectedClub"),
-	availableBodyParts: function() {
-		return App.bodyParts.content.filter(function(part) {
+	availableBodyParts: function () {
+		return App.bodyParts.content.filter(function (part) {
 			return part.types.contains(App.goal.creation);
 		})
 	}.property("@each", "App.goal.creation"),
 	withAssist: false,
-	creations: function() {
+	creations: function () {
 		App.goal.set("creation", "");
-		if(this.get("withAssist")) {
-			return App.creations.content.filter(function(creation) {
+		if (this.get("withAssist")) {
+			return App.creations.content.filter(function (creation) {
 				return creation.type == "assist";
 			});
 		} else {
-			return App.creations.content.filter(function(creation) {
+			return App.creations.content.filter(function (creation) {
 				return creation.type == "solo";
 			});
 		}
 	}.property("withAssist"),
-	addMatchEvent: function() {
+	addMatchEvent: function () {
 		var type = App.matchEventTypes.selected;
 		console.log(type);
 		var isValid = false;
-		switch(type) {
-			case "Tor": {
+		switch (type) {
+			case "Tor":
+			{
 				var match = this.get("content");
 				var club = App.matchEvent.club;
-				if (club && (App.goal.scorer || App.goal.scorerNr) ) {
+				if (club && (App.goal.scorer || App.goal.scorerNr)) {
 					isValid = true;
 
 					var isOwnClub = false;
-					if (club == this.get("controllers.club.name") ) {
-						match.set("ownGoals", match.get("ownGoals")+1);
+					if (club == this.get("controllers.club.name")) {
+						match.set("ownGoals", match.get("ownGoals") + 1);
 						isOwnClub = true;
 					} else {
-						match.set("opponentGoals", match.get("opponentGoals")+1);
+						match.set("opponentGoals", match.get("opponentGoals") + 1);
 					}
 					var ownGoals = match.get("ownGoals");
 					var opponentGoals = match.get("opponentGoals");
 					var homeAdvantage = match.get("homeAdvantage");
-					generateGoal(isOwnClub, homeAdvantage, ownGoals, opponentGoals);
+					var withAssist = this.get("withAssist");
+					generateGoal(isOwnClub, homeAdvantage, ownGoals, opponentGoals, withAssist);
 
 				}
 				break;
@@ -395,30 +403,30 @@ App.AddMatchEventController = Ember.Controller.extend({
 App.TestController = Ember.ObjectController.extend({
 	needs: ["club", "players"]
 	/*clubInfo: function() {
-		return App.Club.find("51af43fd1cf778493ccd0d3a");
-	}.property(),
-	teamsInfo: function() {
-		return App.Team.find();
-	}.property(),
-	players: function() {
-		return App.Player.find();
-	}.property(),
-	teamInfo: function() {
-		return this.get("players").get("teams.length");
-	}.property()*/
+	 return App.Club.find("51af43fd1cf778493ccd0d3a");
+	 }.property(),
+	 teamsInfo: function() {
+	 return App.Team.find();
+	 }.property(),
+	 players: function() {
+	 return App.Player.find();
+	 }.property(),
+	 teamInfo: function() {
+	 return this.get("players").get("teams.length");
+	 }.property()*/
 });
 
 App.PlayersController = Ember.ArrayController.extend({
-	clubPlayerList: function() {
-		return App.Player.filter(function(player) {
+	clubPlayerList: function () {
+		return App.Player.filter(function (player) {
 			return player.get("id");
 		});
 	}.property("@each"),
-	edit: function(player) {
+	edit: function (player) {
 		alert("edit");
 		this.transitionToRoute("player", player);
 	},
-	delete: function(player) {
+	delete: function (player) {
 		console.log(player);
 		player.deleteRecord();
 		player.save();
@@ -426,7 +434,7 @@ App.PlayersController = Ember.ArrayController.extend({
 });
 
 App.PlayerController = Ember.ObjectController.extend({
-	savePlayer: function() {
+	savePlayer: function () {
 		var firstName = this.get("firstName");
 		var lastName = this.get("lastName");
 		var bday = new Date(this.get("birthday"));
@@ -446,7 +454,7 @@ App.PlayersNewController = Ember.ObjectController.extend({
 	firstName: "",
 	lastName: "",
 	birthday: "",
-	createPlayer: function() {
+	createPlayer: function () {
 		var firstName = this.get("firstName");
 		var lastName = this.get("lastName");
 		var bday = new Date(this.get("birthday"));
@@ -480,39 +488,39 @@ App.PlayersNewController = Ember.ObjectController.extend({
 App.TeamsController = Ember.ArrayController.extend({
 	needs: ["club", "players"],
 	clubBinding: "controllers.club",
-	clubTeams: function() {
-			var clubId = this.get("controllers.club.id");
-			console.log(this.get("content"));
-			var teams = this.filter(function(team) {
-				return (team.get("club.id") == clubId);
-			});
-			return this.get("content");
+	clubTeams: function () {
+		var clubId = this.get("controllers.club.id");
+		console.log(this.get("content"));
+		var teams = this.filter(function (team) {
+			return (team.get("club.id") == clubId);
+		});
+		return this.get("content");
 	}.property("@each"),
-	clubPlayerList: function() {
+	clubPlayerList: function () {
 		console.log("calculate clubPlayerList");
-		var playerList = App.Player.filter(function(player) {
+		var playerList = App.Player.filter(function (player) {
 			return player.get("id") && player.get("team.id") == null;
 		});
 		console.log("playerList " + playerList.get("length"));
 		return playerList;
 	}.property("@each.team.id", "controllers.players", "selectedTeamId"),
 	selectedTeamId: null,
-	selectedTeamName: function() {
+	selectedTeamName: function () {
 		return App.Team.find(this.get("selectedTeamId")).get("name");
 	}.property("selectedTeamId"),
-	teamPlayerList: function() {
+	teamPlayerList: function () {
 		console.log("calculate teamPlayerList");
 		var selectedTeamId = this.get("selectedTeamId");
-		var teamPlayerList = App.Player.filter(function(player) {
+		var teamPlayerList = App.Player.filter(function (player) {
 			console.log(player + " - " + player.get("team.id") + " - " + selectedTeamId);
 			return selectedTeamId && player.get("team.id") == selectedTeamId;
 		});
 		return teamPlayerList;
 	}.property("@each.team.id", "controllers.players", "selectedTeamId"),
-	valueChanged: function(value) {
+	valueChanged: function (value) {
 		this.set("selectedTeamId", value);
 	},
-	dropPlayer: function(player) {
+	dropPlayer: function (player) {
 		var teamId = player.get("team.id");
 		var id = this.get("selectedTeamId");
 		if (teamId != id) {
@@ -535,7 +543,7 @@ App.article = Ember.Object.create({
 });
 
 App.ClubController = Ember.ObjectController.extend({
-	saveClub: function() {
+	saveClub: function () {
 		var name = this.get("name");
 		var short = this.get("short");
 		var bday = new Date(this.get("birthday"));
@@ -554,10 +562,10 @@ App.session = Ember.Object.create({
 });
 
 App.LoginController = Ember.Controller.extend({
-	login: function(user) {
+	login: function (user) {
 		var users = App.User.find({ email: user.email });
 		var self = this;
-		users.one("didLoad", function() {
+		users.one("didLoad", function () {
 			var newUser = users.get("firstObject");
 			if (newUser && newUser.get("password") == user.password) {
 				App.session.set("user", newUser);

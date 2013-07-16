@@ -17,11 +17,21 @@
 <script type="text/x-handlebars" data-template-name="index">
 	<h1>{{clubName}}</h1>
 
-	{{#linkTo "matchOverview"}}<button class="menu-button">Spielübersicht</button>{{/linkTo}}</br>
-	{{#linkTo "account"}}<button class="menu-button">Konto</button>{{/linkTo}}</br>
-	{{#linkTo "playerPool"}}<button class="menu-button">Spielerpool</button>{{/linkTo}}</br>
-	{{#linkTo "teams"}}<button class="menu-button">Mannschaften</button>{{/linkTo}}</br>
-	{{#linkTo "club"}}<button class="menu-button">Verein</button>{{/linkTo}}</br>
+	{{#linkTo "matchOverview"}}
+	<button class="menu-button">Spielübersicht</button>
+	{{/linkTo}}</br>
+	{{#linkTo "account"}}
+	<button class="menu-button">Konto</button>
+	{{/linkTo}}</br>
+	{{#linkTo "playerPool"}}
+	<button class="menu-button">Spielerpool</button>
+	{{/linkTo}}</br>
+	{{#linkTo "teams"}}
+	<button class="menu-button">Mannschaften</button>
+	{{/linkTo}}</br>
+	{{#linkTo "club"}}
+	<button class="menu-button">Verein</button>
+	{{/linkTo}}</br>
 
 	<footer>
 		{{#linkTo "login"}}Anmelden{{/linkTo}}
@@ -35,21 +45,30 @@
 		<option>Kein Filter</option>
 		<option>Herren</option>
 	</select></label></br>
-	{{#linkTo "matchOverview.newMatch"}}<button class="menu-button">Neues Spiel</button>{{/linkTo}}</br>
+	{{#linkTo "matchOverview.newMatch"}}
+	<button class="menu-button">Neues Spiel</button>
+	{{/linkTo}}</br>
 
 	<div class="tabs">
 		<ul>
-			<li {{#linkTo "tabs.finished" tagName="span"}}Beendete Spiele{{/linkTo}}</li>
-			<li {{#linkTo "tabs.live"}}Live{{/linkTo}}</li>
-			<li {{#linkTo "tabs.coming"}}Kommende Spiele{{/linkTo}}</li>
+			<li
+			{{#linkTo "tabs.finished" tagName="span"}}Beendete Spiele{{/linkTo}}</li>
+			<li
+			{{#linkTo "tabs.live"}}Live{{/linkTo}}</li>
+			<li
+			{{#linkTo "tabs.coming"}}Kommende Spiele{{/linkTo}}</li>
 		</ul>
 	</div>
 
 
 	<div class="tabpanel">
 		<div class="tabs">
-			<div {{action "goToFirstTab" target="controller"}}>First tab</div>
-		<div {{action "goToSecondTab" target="controller"}}>Second tab</div>
+			<div
+			{{action "goToFirstTab" target="controller"}}>First tab
+		</div>
+		<div
+		{{action "goToSecondTab" target="controller"}}>Second tab
+	</div>
 	</div>
 	{{outlet}}
 	</div>
@@ -107,13 +126,15 @@
 </script>
 
 
-
-
 <script type="text/x-handlebars" data-template-name="matchOverview/index">
 	<div class="tabpanel">
 		<div class="tabs">
-			<div {{action "goToFirstTab"}}>First tab</div>
-		<div {{action "goToSecondTab"}}>Second tab</div>
+			<div
+			{{action "goToFirstTab"}}>First tab
+		</div>
+		<div
+		{{action "goToSecondTab"}}>Second tab
+	</div>
 	</div>
 	{{outlet}}
 	</div>
@@ -126,9 +147,6 @@
 <script type="text/x-handlebars" data-template-name="tabs/secondTab">
 	Second Tab content
 </script>
-
-
-
 
 
 <script src="js/libs/jquery-1.9.1.js"></script>

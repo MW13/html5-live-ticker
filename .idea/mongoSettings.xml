@@ -8,7 +8,6 @@
           <option name="label" value="Localhost" />
           <option name="serverName" value="localhost" />
           <option name="serverPort" value="27017" />
-          <option name="serverVersion" value="2.4.1" />
         </ServerConfiguration>
       </list>
     </option>

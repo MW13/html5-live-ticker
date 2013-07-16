@@ -43,7 +43,7 @@ App.BoxsController = Ember.ArrayController.extend({
 	selBox: null,
 	addBox: function () {
 		var newBox;
-		newBox = App.store.createRecord(App.Box,{
+		newBox = App.store.createRecord(App.Box, {
 			text: 'newBox',
 			height: 100,
 			width: 200
@@ -57,7 +57,8 @@ App.BoxsController = Ember.ArrayController.extend({
 		for (_i = 0, _len = _ref.length; _i < _len; _i++) {
 			obj = _ref[_i];
 			obj.set('selected', false);
-		};
+		}
+		;
 		box.set('selected', true);
 		return this.set('selBox', box);
 	},
@@ -71,10 +72,10 @@ App.BoxsController = Ember.ArrayController.extend({
 });
 
 App.BoxView = Ember.View.extend({
-	init: function() {
+	init: function () {
 		this._super();
 		var self = this;
-		this.get("controller").content.on("didCreate", function() {
+		this.get("controller").content.on("didCreate", function () {
 			alert("updated");
 		});
 	},
@@ -110,12 +111,12 @@ window.Models = {};
 
 SOCKET = "/";
 /*
-DS.SocketAdapter.map('App.Box', {
-	box: {
-		key: 'boxs'
-	}
-});
-*/
+ DS.SocketAdapter.map('App.Box', {
+ box: {
+ key: 'boxs'
+ }
+ });
+ */
 App.store = DS.Store.create({
 	revision: 12,
 	adapter: DS.SocketAdapter.create({})

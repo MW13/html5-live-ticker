@@ -30,7 +30,7 @@
 	<h2>Tables</h2>
 	{{controller}}
 	{{#each table in controller}}
-		{{#linkTo "table" table}}{{table.id}}{{/linkTo}}
+	{{#linkTo "table" table}}{{table.id}}{{/linkTo}}
 	{{/each}}
 </script>
 
@@ -49,9 +49,9 @@
 	<ul id="customer-tab">
 		{{controller}}
 		{{#each tabItem in tabItems}}
-			<li><h3>{{tabItem.food.name}}<span>${{tabItem.cents}}</span></h3></li>
+		<li><h3>{{tabItem.food.name}}<span>${{tabItem.cents}}</span></h3></li>
 		{{else}}
-			<li><h3>Click a food to add it</h3></li>
+		<li><h3>Click a food to add it</h3></li>
 		{{/each}}
 	</ul>
 </script>
@@ -59,10 +59,10 @@
 <script type="text/x-handlebars" data-template-name="food">
 	<ul id="menu">
 		{{#each food in controller}}
-			<li>
-				<img {{bindAttr src="food.imageUrl"}}>
-				<p>{{food.name}}</p>
-			</li>
+		<li>
+			<img {{bindAttr src="food.imageUrl"}}>
+			<p>{{food.name}}</p>
+		</li>
 		{{/each}}
 	</ul>
 </script>

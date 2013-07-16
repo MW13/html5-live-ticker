@@ -33,23 +33,23 @@
 					<li>{{#linkTo "test"}}Test{{/linkTo}}</li>
 					<li>{{#linkTo "players"}}Spieler{{/linkTo}}</li>
 					{{#with App.session}}
-						{{#if user}}
+					{{#if user}}
 
-							<li>{{#linkTo "teams"}}Mannschaften{{/linkTo}}</li>
-							<li>{{#linkTo "club"}}Verein{{/linkTo}}</li>
-						{{/if}}
+					<li>{{#linkTo "teams"}}Mannschaften{{/linkTo}}</li>
+					<li>{{#linkTo "club"}}Verein{{/linkTo}}</li>
+					{{/if}}
 					{{/with}}
 				</ul>
 				<ul class="nav pull-right">
 					{{#with App.session}}
-						{{#if user}}
-							<li><a class="brand">Willkommen {{user.firstName}}</a></li>
-							<li>{{#linkTo "profile"}}Profil{{/linkTo}}</li>
-							<li><a {{action "logout"}}>Abmelden</a></li>
-						{{else}}
-							<li>{{#linkTo "login"}}Login{{/linkTo}}</li>
-							<li>{{#linkTo "register"}}Registrieren{{/linkTo}}</li>
-						{{/if}}
+					{{#if user}}
+					<li><a class="brand">Willkommen {{user.firstName}}</a></li>
+					<li>{{#linkTo "profile"}}Profil{{/linkTo}}</li>
+					<li><a {{action "logout"}}>Abmelden</a></li>
+					{{else}}
+					<li>{{#linkTo "login"}}Login{{/linkTo}}</li>
+					<li>{{#linkTo "register"}}Registrieren{{/linkTo}}</li>
+					{{/if}}
 					{{/with}}
 				</ul>
 			</div>
@@ -67,9 +67,11 @@
 		<div class="row">
 			<div class="span4 matchCollection">
 				{{#with App.session}}
-					{{#if user}}
-						{{#linkTo "addMatch"}}<button>Neues Spiel</button>{{/linkTo}}
-					{{/if}}
+				{{#if user}}
+				{{#linkTo "addMatch"}}
+				<button>Neues Spiel</button>
+				{{/linkTo}}
+				{{/if}}
 				{{/with}}
 
 				<div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -100,31 +102,31 @@
 
 <script type="text/x-handlebars" data-template-name="_finishedMatches">
 	{{#each match in finishedMatches}}
-		{{#linkTo "match" match}}
-			{{render "matchOverview" match}}
-		{{/linkTo}}
+	{{#linkTo "match" match}}
+	{{render "matchOverview" match}}
+	{{/linkTo}}
 	{{else}}
-		Sorry, leer!
+	Sorry, leer!
 	{{/each}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="_liveMatches">
 	{{#each match in liveMatches}}
-		{{#linkTo "match" match}}
-			{{render "matchOverview" match}}
-		{{/linkTo}}
+	{{#linkTo "match" match}}
+	{{render "matchOverview" match}}
+	{{/linkTo}}
 	{{else}}
-		Sorry, leer!
+	Sorry, leer!
 	{{/each}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="_comingMatches">
 	{{#each match in comingMatches}}
-		{{#linkTo "match" match}}
-			{{render "matchOverview" match}}
-		{{/linkTo}}
+	{{#linkTo "match" match}}
+	{{render "matchOverview" match}}
+	{{/linkTo}}
 	{{else}}
-		Sorry, leer!
+	Sorry, leer!
 	{{/each}}
 </script>
 
@@ -138,10 +140,10 @@
 		<label>Anstoß: {{view App.TimeField valueBinding="controller.time"}}</label> {{controller.time}}
 		<label>Spielort: {{view Ember.TextField type="text" valueBinding="controller.place"}}</label>
 		<label>Team: {{view Ember.Select contentBinding="controllers.teams.content"
-						optionValuePath="content.id"
-						optionLabelPath="content.name"
-						prompt="Wähle eine Mannschaft"
-						valueBinding="controller.teamId"}}</label>
+			optionValuePath="content.id"
+			optionLabelPath="content.name"
+			prompt="Wähle eine Mannschaft"
+			valueBinding="controller.teamId"}}</label>
 	</form>
 
 	{{view App.AddMatchButton}}
@@ -154,33 +156,38 @@
 	{{render "matchOverview" this}}
 
 	{{#with App.session}}
-		{{#if user}}
-			{{#if controller.notStarted}}
-				<button {{action startMatch}}>Spiel starten</button>
-			{{/if}}
-			{{#if controller.started}}
-				{{#linkTo "addMatchEvent"}}<button>Neues Spielereignis</button>{{/linkTo}}
-				<button {{action stopMatch}}>Spiel beenden</button>
-			{{/if}}
-		{{/if}}
+	{{#if user}}
+	{{#if controller.notStarted}}
+	<button
+	{{action startMatch}}>Spiel starten</button>
+	{{/if}}
+	{{#if controller.started}}
+	{{#linkTo "addMatchEvent"}}
+	<button>Neues Spielereignis</button>
+	{{/linkTo}}
+	<button
+	{{action stopMatch}}>Spiel beenden</button>
+	{{/if}}
+	{{/if}}
 	{{/with}}
 
-	<br>Spielfortschritt {{view Ember.View type="progress" valueBinding="minute" max="90"}}<progress valueBinding="minute" max="90"></progress>
+	<br>Spielfortschritt {{view Ember.View type="progress" valueBinding="minute" max="90"}}
+	<progress valueBinding="minute" max="90"></progress>
 	{{minute}}. Minute<br>{{kickoff}}
 
 	<ul>
 		{{#each event in controller.matchEvents}}
-			<li class="mE_item">
-				<div>
-					<span class="mE_item_minute">{{event.minute}}.</span>
-					<span class="mE_item_title"><strong>{{event.title}}</strong></span>
-				</div>
-				<div>
-					{{view App.Image imageTypeBinding="event.type" }}
-					<span class="mE_item_text">{{event.text}}</span>
-				</div>
-				<hr>
-			</li>
+		<li class="mE_item">
+			<div>
+				<span class="mE_item_minute">{{event.minute}}.</span>
+				<span class="mE_item_title"><strong>{{event.title}}</strong></span>
+			</div>
+			<div>
+				{{view App.Image imageTypeBinding="event.type" }}
+				<span class="mE_item_text">{{event.text}}</span>
+			</div>
+			<hr>
+		</li>
 		{{/each}}
 	</ul>
 </script>
@@ -188,27 +195,26 @@
 <script type="text/x-handlebars" data-template-name="addMatchEvent">
 	<div class="mE">
 		<h3 class="centered">Spielereignis erstellen</h3>
+
 		<form>
 			<fieldset class="well the-fieldset">
 				<legend class="the-legend">Ereignistyp</legend>
-					<div class="row">
-						<div class="span8">
-							{{view App.MySelect viewName="select"
-								contentBinding="App.matchEventTypes.content"
-								valueBinding="App.matchEventTypes.selected"}}
-							{{#if App.matchEventTypes.goal}}
-								{{partial goal}}
-							{{/if}}
-						</div>
+				<div class="row">
+					<div class="span8">
+						{{view App.MySelect viewName="select"
+						contentBinding="App.matchEventTypes.content"
+						valueBinding="App.matchEventTypes.selected"}}
+						{{#if App.matchEventTypes.goal}}
+						{{partial goal}}
+						{{/if}}
 					</div>
+				</div>
 			</fieldset>
 		</form>
 
 
 		<!--<label>Title: {{view Ember.TextField valueBinding="App.matchEvent.title"}}</label>
 		<label>Text: {{view Ember.TextArea valueBinding="App.matchEvent.text"}}</label>-->
-
-
 
 
 		<p>
@@ -232,17 +238,17 @@
 				<div class="span2">
 					<h4>Torschütze:</h4>{{controller.teamPlayerList.length}}{{controller.isOwnClub}}
 					{{#if controller.isOwnClub}}
-						{{view Ember.Select contentBinding="teamPlayerList"
-							optionValuePath="content"
-							optionLabelPath="content.fullNameInverse"
-							prompt="Wähle einen Spieler"
-							valueBinding="App.goal.scorer"
-							disabledBinding="scorerWithNumber"}}
+					{{view Ember.Select contentBinding="teamPlayerList"
+					optionValuePath="content"
+					optionLabelPath="content.fullNameInverse"
+					prompt="Wähle einen Spieler"
+					valueBinding="App.goal.scorer"
+					disabledBinding="scorerWithNumber"}}
 
-						<label class="checkbox">{{view App.ScorerWithNumberCheckbox checkedBinding="scorerWithNumber"}}mit Nummer</label>
-						{{#if scorerWithNumber}}
-							{{view App.PlayerNumberField valueBinding="App.goal.scorerNr"}}<br>
-						{{/if}}
+					<label class="checkbox">{{view App.ScorerWithNumberCheckbox checkedBinding="scorerWithNumber"}}mit Nummer</label>
+					{{#if scorerWithNumber}}
+						{{view App.PlayerNumberField valueBinding="App.goal.scorerNr"}}<br>
+					{{/if}}
 
 					{{else}}
 						<label>Nummer {{view App.PlayerNumberField valueBinding="App.goal.scorerNr"}}</label>
@@ -259,10 +265,10 @@
 					{{view App.CreationRadioButton option="solo" title="Einzelleistung" checked="true"}}
 					{{view App.CreationRadioButton option="assist" title="mit Vorlage"}}
 					{{view Ember.Select contentBinding="creations"
-						optionValuePath="content.id"
-						optionLabelPath="content.name"
-						prompt="Wähle eine Aktion"
-						valueBinding="App.goal.creation"}} ! {{App.goal.creation}} !
+					optionValuePath="content.id"
+					optionLabelPath="content.name"
+					prompt="Wähle eine Aktion"
+					valueBinding="App.goal.creation"}} ! {{App.goal.creation}} !
 				</div>
 
 			</div>
@@ -287,14 +293,14 @@
 				{{view App.GoalSegment}}
 			</div>
 			{{#if App.goal.creation}}
-				<div class="span2">
-					<h4>Körperteil:</h4>
-					{{view Ember.Select contentBinding="availableBodyParts"
-					optionValuePath="content.id"
-					optionLabelPath="content.name"
-					prompt="Wähle ein Körperteil"
-					valueBinding="App.goal.partOfBody"}}
-				</div>
+			<div class="span2">
+				<h4>Körperteil:</h4>
+				{{view Ember.Select contentBinding="availableBodyParts"
+				optionValuePath="content.id"
+				optionLabelPath="content.name"
+				prompt="Wähle ein Körperteil"
+				valueBinding="App.goal.partOfBody"}}
+			</div>
 			{{/if}}
 
 		</div>
@@ -311,20 +317,20 @@
 			<div class="span2">
 				<h4>Vorlagengeber:</h4>
 				{{#if teamPlayerList}}
-					{{view Ember.Select contentBinding="teamPlayerList"
-						optionValuePath="content.id"
-						optionLabelPath="content.fullNameInverse"
-						prompt="Wähle einen Spieler"
-						valueBinding="App.assist.assist"
-						disabledBinding="assistWithNumber"}}
+				{{view Ember.Select contentBinding="teamPlayerList"
+				optionValuePath="content"
+				optionLabelPath="content.fullNameInverse"
+				prompt="Wähle einen Spieler"
+				valueBinding="App.assist.assist"
+				disabledBinding="assistWithNumber"}}
 
-					<label class="checkbox">{{view App.AssistWithNumberCheckbox checkedBinding="assistWithNumber"}}mit Nummer</label>
-					{{#if assistWithNumber}}
-						{{view App.PlayerNumberField valueBinding="App.assist.assist"}}<br>
-					{{/if}}
+				<label class="checkbox">{{view App.AssistWithNumberCheckbox checkedBinding="assistWithNumber"}}mit Nummer</label>
+				{{#if assistWithNumber}}
+					{{view App.PlayerNumberField valueBinding="App.assist.assistNr"}}<br>
+				{{/if}}
 
 				{{else}}
-					<label>Nummer {{view App.PlayerNumberField valueBinding="App.assist.assist"}}</label>
+					<label>Nummer {{view App.PlayerNumberField valueBinding="App.assist.assistNr"}}</label>
 				{{/if}}
 				{{App.assist.assist}}
 			</div>
@@ -339,17 +345,24 @@
 <script type="text/x-handlebars" data-template-name="matchOverview">
 	<div class="matchOverview">
 		<h4>{{teamHome}} - {{teamAway}}</h4>
+
 		<h1>{{goalsHome}} : {{goalsAway}}</h1>
+
 		<p>{{date}} {{team.name}} {{time}}</p>
 	</div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="playerListElement">
-	<table><tr>
+	<table>
+		<tr>
 			<td class="name">{{view.content.fullNameInverse}}, {{view.content.age}} - {{view.content.id}}</td>
-			<td class="edit"><img class='listImage' {{action edit view.content bubbles=false}} src='images/edit.png'></td>
-			<td class="delete"><img class='listImage' {{action delete view.content bubbles=false}} src='images/cancel.png'></td>
-	</tr></table>
+			<td class="edit"><img class='listImage' {{action edit view.content bubbles=false}} src='images/edit.png'>
+			</td>
+			<td class="delete"><img class='listImage' {{action delete view.content bubbles=false}}
+				src='images/cancel.png'>
+			</td>
+		</tr>
+	</table>
 </script>
 
 <script type="text/x-handlebars" data-template-name="players">
@@ -357,7 +370,9 @@
 		<div class="row">
 			<div class="span12 centered">
 				<h3>Spieler</h3>
-				{{#linkTo "players.new"}}<button>Spieler anlegen</button>{{/linkTo}}
+				{{#linkTo "players.new"}}
+				<button>Spieler anlegen</button>
+				{{/linkTo}}
 				{{this.content.length}} {{clubPlayerList}}
 			</div>
 		</div>
@@ -380,7 +395,8 @@
 		<label>Nachname:<br>{{view Ember.TextField valueBinding="controller.lastName"}}</label>
 		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="controller.lastName"}}</label>
 		<label>Geburtstag:<br>{{view App.DateField valueBinding="controller.birthday"}}</label>
-		<button {{action savePlayer}}>Speichern</button>
+		<button
+		{{action savePlayer}}>Speichern</button>
 	</div>
 </script>
 
@@ -391,7 +407,8 @@
 		<label>Nachname:<br>{{view Ember.TextField valueBinding="controller.lastName"}}</label>
 		<label>Passnummer:<br>{{view Ember.TextField type="number" valueBinding="controller.lastName" disabled="true"}}</label>
 		<label>Geburtstag:<br>{{view App.DateField valueBinding="controller.birthday"}}</label>
-		<button {{action createPlayer}}>Anlegen</button>
+		<button
+		{{action createPlayer}}>Anlegen</button>
 	</div>
 </script>
 
@@ -415,7 +432,7 @@
 			<div class="span4">
 				<h4>{{selectedTeamName}}</h4>
 				{{#if selectedTeamId}}
-					{{view App.PlayerListTeam contentBinding="teamPlayerList" id="teamPlayerList"}}
+				{{view App.PlayerListTeam contentBinding="teamPlayerList" id="teamPlayerList"}}
 				{{/if}}
 			</div>
 			<div class="span4">
@@ -425,9 +442,9 @@
 	</div>
 
 	{{#each team in clubTeams}}
-		<ul>
-			<li>{{#linkTo "team" team}}{{team.name}}{{/linkTo}}</li>
-		</ul>
+	<ul>
+		<li>{{#linkTo "team" team}}{{team.name}}{{/linkTo}}</li>
+	</ul>
 	{{/each}}
 
 	<div>
@@ -441,10 +458,10 @@
 	<h1>Test</h1>
 	{{content}} {{content.name}} {{content.teams}} {{content.teams.length}}<br>
 	{{#each team in content.teams}}
-		Teamname: {{team.name}}, TeamId: {{team.id}}, Teamkader: {{team.players.length}}<br>
-		{{#each player in team.players}}
-			Spieler: {{player.fullName}}, Spielername: {{player.age}}<br>
-		{{/each}}
+	Teamname: {{team.name}}, TeamId: {{team.id}}, Teamkader: {{team.players.length}}<br>
+	{{#each player in team.players}}
+	Spieler: {{player.fullName}}, Spielername: {{player.age}}<br>
+	{{/each}}
 	{{/each}}
 	<hr>
 	Spielerinstanz: {{content.players}}, Spieleranzahl: {{content.players.length}}<br>
@@ -454,7 +471,7 @@
 
 	{{controllers.players.content.length}}<br>
 	{{#each player in controllers.players.content}}
-		{{player}} {{player.id}} {{player._id}}
+	{{player}} {{player.id}} {{player._id}}
 	{{/each}}
 </script>
 
@@ -473,9 +490,11 @@
 		<div class="row">
 			<div class="span6">
 				<label>Vereinsname:<br>{{view Ember.TextField valueBinding="controller.name"}}</label>
-				<label>Artikel:<br>{{view Ember.Select contentBinding="App.article.content" valueBinding="App.article.selectedArticle"}}</label>
+				<label>Artikel:<br>{{view Ember.Select contentBinding="App.article.content"
+					valueBinding="App.article.selectedArticle"}}</label>
 				<label>Kürzel:<br>{{view Ember.TextField valueBinding="controller.short"}}</label>
-				<button {{action saveClub}}>Speichern</button>
+				<button
+				{{action saveClub}}>Speichern</button>
 			</div>
 			<div class="span6">
 
@@ -492,12 +511,14 @@
 	<form class="form-horizontal" id="form_signIn">
 		<div class="control-group">
 			<label class="control-label" for="inputEmail">E-mail</label>
+
 			<div class="controls">
 				<input type="text" id="inputEmail" name="email" placeholder="E-Mail">
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputPassword">Passwort</label>
+
 			<div class="controls">
 				<input type="password" id="inputPassword" name="password" placeholder="Passwort">
 			</div>

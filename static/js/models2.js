@@ -25,22 +25,22 @@ App.Match.FIXTURES = [
 	{homeAdvantage: false, teamHome: "Eintracht Bötzow", teamAway: "1. SV Oberkrämer", team: "B-Junioren", kickoff: "2013-04-11T16:40:00", place: "Velten", goalsHome: 3, goalsAway: 1}
 ]
 /*
-App.Match = Ember.Object.extend({
-	homeAdvantage: false,
-	teamHome: null,
-	teamAway: null,
-	goalsHome: 0,
-	goalsAway: 0,
-	opponent: null,
-	date: null,
-	kickoff: null,
-	place: null,
-	teamGroup: null
-});
-*/
+ App.Match = Ember.Object.extend({
+ homeAdvantage: false,
+ teamHome: null,
+ teamAway: null,
+ goalsHome: 0,
+ goalsAway: 0,
+ opponent: null,
+ date: null,
+ kickoff: null,
+ place: null,
+ teamGroup: null
+ });
+ */
 /*
-EME.Photo = DS.Model.extend({
-	imageTitle: DS.attr('string'),
-	imageUrl: DS.attr('string')
-});
-*/
+ EME.Photo = DS.Model.extend({
+ imageTitle: DS.attr('string'),
+ imageUrl: DS.attr('string')
+ });
+ */

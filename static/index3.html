@@ -19,22 +19,27 @@
 
 <script type="text/x-handlebars" data-template-name="index">
 	<h1>Index {{title}}</h1>
-	<button {{#linkTo "start"}}Spielübersicht{{/linkTo}}</button>
+	<button
+	{{#linkTo "start"}}Spielübersicht{{/linkTo}}</button>
 </script>
 
 
 <script type="text/x-handlebars" data-template-name="matchOverview">
 	<h1>MatchOverview {{title}}</h1>
 	<!--<button {{action openNewMatch}}>Neues Spiel</button>-->
-	<button {{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
+	<button
+	{{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
 </script>
 
 <script type="text/x-handlebars" data-template-name="start">
 	<h1>Start {{title}}</h1>
-	<button {{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
+	<button
+	{{#linkTo "matchOverview.newMatch"}}Neues Spiel{{/linkTo}}</button>
 	<ul>
-		<li {{#linkTo "start.finished"}}Beendet{{/linkTo}}</li>
-		<li {{#linkTo "start.live"}}Live{{/linkTo}}</li>
+		<li
+		{{#linkTo "start.finished"}}Beendet{{/linkTo}}</li>
+		<li
+		{{#linkTo "start.live"}}Live{{/linkTo}}</li>
 	</ul>
 	{{outlet tabsOutlet}}
 </script>
@@ -47,11 +52,13 @@
 
 <script type="text/x-handlebars" data-template-name="start/finished">
 	<h1>Start.finished {{title}}</h1>
+
 	<p>Beendet Liste</p>
 </script>
 
 <script type="text/x-handlebars" data-template-name="start/live">
 	<h1>Start.live {{title}}</h1>
+
 	<p>Live Liste</p>
 </script>
 

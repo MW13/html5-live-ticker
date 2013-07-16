@@ -15,16 +15,26 @@
 <script type="text/x-handlebars" data-template-name="index">
 	<h1>1 {{content.name}} 2 {{name}} 3 {{controllers.club.name}}</h1>
 
-	{{#linkTo "matchOverview"}}<button {{bindAttr class="btnClass"}}>Spielübersicht</button>{{/linkTo}}</br>
+	{{#linkTo "matchOverview"}}
+	<button
+	{{bindAttr class="btnClass"}}>Spielübersicht</button>{{/linkTo}}</br>
 
 	{{#if isModerator}}
-	{{#linkTo "account"}}<button {{bindAttr class="btnClass"}}>Konto</button>{{/linkTo}}</br>
-	{{#linkTo "playerPool"}}<button {{bindAttr class="btnClass"}}>Spielerpool</button>{{/linkTo}}</br>
-	{{#linkTo "teams"}}<button {{bindAttr class="btnClass"}}>Mannschaften</button>{{/linkTo}}</br>
+	{{#linkTo "account"}}
+	<button
+	{{bindAttr class="btnClass"}}>Konto</button>{{/linkTo}}</br>
+	{{#linkTo "playerPool"}}
+	<button
+	{{bindAttr class="btnClass"}}>Spielerpool</button>{{/linkTo}}</br>
+	{{#linkTo "teams"}}
+	<button
+	{{bindAttr class="btnClass"}}>Mannschaften</button>{{/linkTo}}</br>
 	{{/if}}
 
 	{{#if isAdministrator}}
-	{{#linkTo "club"}}<button {{bindAttr class="btnClass"}}>Verein</button>{{/linkTo}}</br>
+	{{#linkTo "club"}}
+	<button
+	{{bindAttr class="btnClass"}}>Verein</button>{{/linkTo}}</br>
 	{{/if}}
 
 	<footer>
@@ -38,7 +48,9 @@
 
 <script type="text/x-handlebars" data-template-name="matchOverview">
 	<h1>{{title}}</h1>
-	{{#linkTo "newMatch"}}<button class="menu-button">Neues Spiel</button>{{/linkTo}}</br>
+	{{#linkTo "newMatch"}}
+	<button class="menu-button">Neues Spiel</button>
+	{{/linkTo}}</br>
 	<a {{#linkTo "matchOverview.finished"}}Beendet{{/linkTo}}</a>
 	<a {{#linkTo "matchOverview.live"}}Live{{/linkTo}}</a>
 	<a {{#linkTo "matchOverview.coming"}}Kommend{{/linkTo}}</a>
@@ -80,22 +92,28 @@
 
 <script type="text/x-handlebars" data-template-name="login">
 	<h1>login</h1>
+
 	<form id="loginForm" class="forms">
 		<label>Email-Adresse:<br><input type="text" name="email"></label><br>
 		<label>Passwort:<br><input type="password" name="password"></label><br>
-		{{#view App.LoginButton}}<button {{bindAttr class="btnClass"}}>Anmelden</button>{{/view}}
+		{{#view App.LoginButton}}
+		<button
+		{{bindAttr class="btnClass"}}>Anmelden</button>{{/view}}
 	</form>
 </script>
 
 <script type="text/x-handlebars" data-template-name="register">
 	<h1>register</h1>
+
 	<form id="registerForm" class="forms">
 		<label>Email-Adresse:<br><input type="text" name="email"></label><br>
 		<label>Vorname:<br><input type="text" name="firstname"></label><br>
 		<label>Nachname:<br><input type="text" name="lastname"></label><br>
 		<label>Passwort:<br><input type="password" name="password1"></label><br>
 		<label>Passwort bestätigen:<br><input type="password" name="password2"></label><br>
-		{{#view App.RegisterButton}}<button {{bindAttr class="btnClass"}}>Registrieren</button>{{/view}}
+		{{#view App.RegisterButton}}
+		<button
+		{{bindAttr class="btnClass"}}>Registrieren</button>{{/view}}
 		<!--<button {{action register}}>Registrieren</button>-->
 	</form>
 </script>

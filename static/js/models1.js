@@ -12,60 +12,60 @@ SOCKET = "/";
 
 App.Store = DS.Store.extend({
 	/*adapter: DS.FixtureAdapter.extend({
-		queryFixtures: function (fixtures, query){
+	 queryFixtures: function (fixtures, query){
 
-			return fixtures.filter(function(fixture){
-				var res = true;
-				for(attr in query){
-					if (query.hasOwnProperty(attr)){
-						res = res && (fixture[attr] == query[attr]);
-					}
-				}
-				return res;
-			});
-		}
-	})*/
+	 return fixtures.filter(function(fixture){
+	 var res = true;
+	 for(attr in query){
+	 if (query.hasOwnProperty(attr)){
+	 res = res && (fixture[attr] == query[attr]);
+	 }
+	 }
+	 return res;
+	 });
+	 }
+	 })*/
 	adapter: App.SocketAdapter.create({})
 });
 
 App.store = App.Store.create({});
 
 /*
-DS.FixtureAdapter.map('App.Club', {
-	teams: {embedded: 'load'}
-});
+ DS.FixtureAdapter.map('App.Club', {
+ teams: {embedded: 'load'}
+ });
 
-DS.FixtureAdapter.map('App.Team', {
-	matches: {embedded: 'load'},
-	playerList: {embedded: "load"}
-});
+ DS.FixtureAdapter.map('App.Team', {
+ matches: {embedded: 'load'},
+ playerList: {embedded: "load"}
+ });
 
-DS.FixtureAdapter.map('App.User', {
-	primaryKey: 'email'
-});*/
+ DS.FixtureAdapter.map('App.User', {
+ primaryKey: 'email'
+ });*/
 
 /*
-App.store = DS.Store.create({
-	revision: 12,
-	adapter: DS.SocketAdapter.create({})
-});
+ App.store = DS.Store.create({
+ revision: 12,
+ adapter: DS.SocketAdapter.create({})
+ });
 
-DS.Model.reopen({
-	save: function () {
-		App.store.commit();
-		return this;
-	}
-});
-*/
+ DS.Model.reopen({
+ save: function () {
+ App.store.commit();
+ return this;
+ }
+ });
+ */
 /*
-DS.SocketAdapter.map('App.Club', {
-	primaryKey: 'name'
-});
+ DS.SocketAdapter.map('App.Club', {
+ primaryKey: 'name'
+ });
 
-DS.SocketAdapter.map('App.Team', {
-	list: {embedded: 'always'}
-});
-*/
+ DS.SocketAdapter.map('App.Team', {
+ list: {embedded: 'always'}
+ });
+ */
 
 App.Club = DS.Model.extend({
 	name: DS.attr("string"),
@@ -88,13 +88,13 @@ App.Player = DS.Model.extend({
 	birthday: DS.attr("date"),
 	team: DS.belongsTo("App.Team"),
 	club: DS.belongsTo("App.Club"),
-	age: function() {
+	age: function () {
 		return age(this.get("birthday"));
 	}.property("birthday"),
-	fullName: function() {
+	fullName: function () {
 		return this.get("firstName") + " " + this.get("lastName");
 	}.property("lastName", "firstName"),
-	fullNameInverse: function() {
+	fullNameInverse: function () {
 		return this.get("lastName") + " " + this.get("firstName");
 	}.property("lastName", "firstName")
 });
@@ -126,7 +126,7 @@ App.User = DS.Model.extend({
 	email: DS.attr("string"),
 	password: DS.attr("string"),
 	role: DS.attr("string"),
-	fullName: function() {
+	fullName: function () {
 		return this.get('firstName') + " " + this.get('lastName');
 	}.property('firstName', 'lastName').cacheable()
 });

@@ -28,11 +28,11 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 		'team': 'teams'
 	},
 	serializer: DS.RESTSerializer.extend({
-		serializeId: function(id) {
+		serializeId: function (id) {
 			console.log("Id: " + id);
 			return id.toString();
 		},
-		primaryKey: function (type){
+		primaryKey: function (type) {
 			return '_id';
 		}
 	}),
@@ -89,8 +89,8 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				match.reload();
 			});
 			/*match.on("didLoad", function() {
-				match.set("minute", minute);
-			});*/
+			 match.set("minute", minute);
+			 });*/
 			//return App.store.load(App.Match, payload.data[payload.type]);
 		});
 		ws.on("disconnect", function () {
@@ -135,20 +135,20 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	},/*
-	createRecords: function (store, type, records) {
-		return this.send({
-			store: store,
-			type: type,
-			records: records,
-			requestType: TYPES.CREATES,
-			callback: function (req, res) {
-				return Ember.run(req.context, function () {
-					return this.didCreateRecords(req.store, req.type, req.records, res);
-				});
-			}
-		});
-	},*/
+	}, /*
+	 createRecords: function (store, type, records) {
+	 return this.send({
+	 store: store,
+	 type: type,
+	 records: records,
+	 requestType: TYPES.CREATES,
+	 callback: function (req, res) {
+	 return Ember.run(req.context, function () {
+	 return this.didCreateRecords(req.store, req.type, req.records, res);
+	 });
+	 }
+	 });
+	 },*/
 	updateRecord: function (store, type, record) {
 		return this.send({
 			store: store,
@@ -174,20 +174,20 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	},/*
-	updateRecords: function (store, type, records) {
-		return this.send({
-			store: store,
-			type: type,
-			records: records,
-			requestType: TYPES.UPDATES,
-			callback: function (req, res) {
-				return Ember.run(req.context, function () {
-					return this.didUpdateRecords(req.store, req.type, req.records, res);
-				});
-			}
-		});
-	},*/
+	}, /*
+	 updateRecords: function (store, type, records) {
+	 return this.send({
+	 store: store,
+	 type: type,
+	 records: records,
+	 requestType: TYPES.UPDATES,
+	 callback: function (req, res) {
+	 return Ember.run(req.context, function () {
+	 return this.didUpdateRecords(req.store, req.type, req.records, res);
+	 });
+	 }
+	 });
+	 },*/
 	deleteRecord: function (store, type, record) {
 		return this.send({
 			store: store,
@@ -200,20 +200,20 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	},/*
-	deleteRecords: function (store, type, records) {
-		return this.send({
-			store: store,
-			type: type,
-			records: records,
-			requestType: TYPES.DELETES,
-			callback: function (req, res) {
-				return Ember.run(req.context, function () {
-					return this.didDeleteRecords(req.store, req.type, req.records, res);
-				});
-			}
-		});
-	},*/
+	}, /*
+	 deleteRecords: function (store, type, records) {
+	 return this.send({
+	 store: store,
+	 type: type,
+	 records: records,
+	 requestType: TYPES.DELETES,
+	 callback: function (req, res) {
+	 return Ember.run(req.context, function () {
+	 return this.didDeleteRecords(req.store, req.type, req.records, res);
+	 });
+	 }
+	 });
+	 },*/
 	find: function (store, type, id) {
 		return this.send({
 			store: store,
@@ -268,22 +268,22 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 			}
 		});
 	},
-	serializeIds: function(ids) {
+	serializeIds: function (ids) {
 		var serializer = Ember.get(this, 'serializer');
 
-		return Ember.EnumerableUtils.map(ids, function(id) {
+		return Ember.EnumerableUtils.map(ids, function (id) {
 			return serializer.serializeId(id);
 		});
 	},
-	rootForType: function(type) {
+	rootForType: function (type) {
 		var serializer = Ember.get(this, 'serializer');
 		return serializer.rootForType(type);
 	},
-	pluralize: function(string) {
+	pluralize: function (string) {
 		var serializer = Ember.get(this, 'serializer');
 		return serializer.pluralize(string);
 	},
-	sinceQuery: function(since) {
+	sinceQuery: function (since) {
 		var query = {};
 		query[Ember.get(this, 'since')] = since;
 		return since ? query : null;

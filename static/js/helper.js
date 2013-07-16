@@ -7,14 +7,21 @@
  */
 function weekday(kickoff) {
 	var day = kickoff.getDay();
-	switch(day) {
-		case 0: return "So";
-		case 1: return "Mo";
-		case 2: return "Di";
-		case 3: return "Mi";
-		case 4: return "Do";
-		case 5: return "Fr";
-		default: return "Sa";
+	switch (day) {
+		case 0:
+			return "So";
+		case 1:
+			return "Mo";
+		case 2:
+			return "Di";
+		case 3:
+			return "Mi";
+		case 4:
+			return "Do";
+		case 5:
+			return "Fr";
+		default:
+			return "Sa";
 	}
 }
 function extractYear(kickoff) {
@@ -22,17 +29,27 @@ function extractYear(kickoff) {
 }
 function month(kickoff) {
 	var month = kickoff.getMonth();
-	switch(month) {
-		case 0: return "01";
-		case 1: return "02";
-		case 2: return "03";
-		case 3: return "04";
-		case 4: return "05";
-		case 5: return "06";
-		case 6: return "07";
-		case 7: return "08";
-		case 8: return "09";
-		default: return month++;
+	switch (month) {
+		case 0:
+			return "01";
+		case 1:
+			return "02";
+		case 2:
+			return "03";
+		case 3:
+			return "04";
+		case 4:
+			return "05";
+		case 5:
+			return "06";
+		case 6:
+			return "07";
+		case 7:
+			return "08";
+		case 8:
+			return "09";
+		default:
+			return month++;
 	}
 }
 function date(d) {
@@ -41,10 +58,10 @@ function date(d) {
 function time(d) {
 	var hours = d.getHours();
 	var minutes = d.getMinutes();
-	if(d.getHours() <= 9) {
+	if (d.getHours() <= 9) {
 		hours = "0" + hours;
 	}
-	if(d.getMinutes() <= 9) {
+	if (d.getMinutes() <= 9) {
 		minutes = "0" + minutes;
 	}
 	return hours + ":" + minutes + " Uhr";
@@ -54,14 +71,24 @@ function age(date) {
 	var today = new Date();
 	var bday = new Date(date);
 
-	var day = today.getDate()-bday.getDate();
-	var months = today.getMonth()-bday.getMonth();
-	var years = today.getYear()-bday.getYear();
+	var day = today.getDate() - bday.getDate();
+	var months = today.getMonth() - bday.getMonth();
+	var years = today.getYear() - bday.getYear();
 
-	if(day<0){day = 30+day; months--;}
-	if(months<0){months = 12+months; years--;}
-	if(years > 2000){years = years-2000}
-	if(years > 1900){years = years-1900}
+	if (day < 0) {
+		day = 30 + day;
+		months--;
+	}
+	if (months < 0) {
+		months = 12 + months;
+		years--;
+	}
+	if (years > 2000) {
+		years = years - 2000
+	}
+	if (years > 1900) {
+		years = years - 1900
+	}
 	//console.log("Alter: " + day + " Tage; " + months + " Monate; " + years + " Jahre");
 	return years;
 }
@@ -101,7 +128,7 @@ function allowDrop(ev) {
 
 function drop(ev) {
 	ev.preventDefault();
-	var data=ev.dataTransfer.getData("Text");
+	var data = ev.dataTransfer.getData("Text");
 	console.log(data);
 	console.log(ev.target.tagName);
 	if (ev.target.tagName == "DIV") {
@@ -113,6 +140,6 @@ function drop(ev) {
 }
 
 function drag(ev) {
-	ev.dataTransfer.setData("Text",ev.target.id);
+	ev.dataTransfer.setData("Text", ev.target.id);
 }
 

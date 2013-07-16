@@ -205,22 +205,22 @@ DS.SocketAdapter = DS.RESTAdapter.extend({
 			}
 		});
 	},
-	serializeIds: function(ids) {
+	serializeIds: function (ids) {
 		var serializer = get(this, 'serializer');
 
-		return Ember.EnumerableUtils.map(ids, function(id) {
+		return Ember.EnumerableUtils.map(ids, function (id) {
 			return serializer.serializeId(id);
 		});
 	},
-	rootForType: function(type) {
+	rootForType: function (type) {
 		var serializer = get(this, 'serializer');
 		return serializer.rootForType(type);
 	},
-	pluralize: function(string) {
+	pluralize: function (string) {
 		var serializer = get(this, 'serializer');
 		return serializer.pluralize(string);
 	},
-	sinceQuery: function(since) {
+	sinceQuery: function (since) {
 		var query = {};
 		query[get(this, 'since')] = since;
 		return since ? query : null;
