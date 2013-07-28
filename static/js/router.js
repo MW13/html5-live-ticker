@@ -5,6 +5,8 @@
  * Time: 21:46
  * To change this template use File | Settings | File Templates.
  */
+const CLUB_ID = "51e6995676b718a9bddb4c25";
+
 App.Router.map(function () {
 	this.route("index", { path: "/" });
 	this.resource("matches", function () {
@@ -39,13 +41,10 @@ App.IndexRoute = Ember.Route.extend({});
 
 App.ApplicationRoute = Ember.Route.extend({
 	model: function () {
-		return App.Club.find("51af43fd1cf778493ccd0d3a");
+		return App.Club.find(CLUB_ID);
 	},
 	setupController: function (controller, model) {
 		this.controllerFor("club").set("content", model);
-		var clubId = this.controllerFor("club").get("id");
-		//this.controllerFor("teams").set("content", App.Team.find());
-		//this.controllerFor("players").set("model", App.Player.find());
 	}
 });
 
@@ -89,7 +88,6 @@ App.AddMatchEventRoute = App.AuthRoute.extend({
 
 App.PlayersRoute = App.AuthRoute.extend({
 	model: function () {
-		var clubId = this.modelFor("application").get("id");
 		return App.Player.find();
 	}
 });
@@ -106,7 +104,7 @@ App.TeamsRoute = App.AuthRoute.extend({
 
 App.ClubRoute = App.AuthRoute.extend({
 	model: function () {
-		return App.Club.find("51af43fd1cf778493ccd0d3a");
+		return App.Club.find(CLUB_ID);
 	}
 });
 

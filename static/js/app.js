@@ -12,14 +12,3 @@ window.App = Ember.Application.create({
 		console.log('App version: ' + App.VERSION + ' is ready.');
 	}
 });
-
-// var socket = io.connect();
-/*
- socket.on('server_message', function(data){
- alert(data);
- });
-
-
- socket.on("loginResponse", function(data) {
- this.transitionToRoute("index");
- });*/

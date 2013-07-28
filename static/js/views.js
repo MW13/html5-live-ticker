@@ -5,21 +5,6 @@
  * Time: 16:34
  * To change this template use File | Settings | File Templates.
  */
-/*
- App.MatchView = Ember.View.extend({
- template: Ember.Handlebars.compile("<p>{{teamHome}} - {{teamAway}}</p><h1>{{goalsHome}} : {{goalsAway}}</h1><p>{{date}} {{team}} {{time}}</p>"),
- templateName: "matchOverview",
- controller: App.MatchController,
- click: function(item) {
- alert("You clicked ");
- },
- emptyView: Ember.View.extend({
- template: Ember.Handlebars.compile("The collection is empty")
- })
- });*/
-
-//App.MatchesView = Ember.CollectionView.extend({});
-
 App.RegisterButton = Ember.View.extend({
 	click: function (evt) {
 		var form = document.getElementById("registerForm");
@@ -64,7 +49,6 @@ App.LoginButton = Ember.View.extend({
 App.AddMatchEventButton = Ember.View.extend({
 	template: Ember.Handlebars.compile("<button>Speichern</button>"),
 	click: function (evt) {
-		console.log(this.get("controller").toString());
 		this.get("controller").send("addMatchEvent");
 	}
 });
@@ -72,7 +56,6 @@ App.AddMatchEventButton = Ember.View.extend({
 App.AddMatchButton = Ember.View.extend({
 	template: Ember.Handlebars.compile("<button>Speichern</button>"),
 	click: function (evt) {
-		console.log(this.get("controller").toString());
 		this.get("controller").send("addMatch");
 	}
 });
@@ -82,7 +65,6 @@ App.MySelect = Ember.Select.extend({
 	valueDidChange: Ember.observer(function () {
 		this._super();
 		var value = this.get("value");
-		console.log(value);
 		this.get("controller").send("valueChanged", value);
 	}, 'value')
 });
@@ -92,7 +74,6 @@ App.ClubRadioButton = Ember.View.extend({
 	checked: false,
 	template: Ember.Handlebars.compile('<label class="radio"><input type="radio" name="club" {{bindAttr checked="view.checked"}}>{{view.title}}</label>'),
 	click: function (evt) {
-		var name = evt.target.name;
 		this.get("controller").send("selectedClubChanged", this.get("title"));
 	}
 });
@@ -104,7 +85,6 @@ App.CreationRadioButton = Ember.View.extend({
 	template: Ember.Handlebars.compile('<label class="radio"><input type="radio" name="creation" {{bindAttr checked="view.checked"}}>{{view.title}}</label>'),
 	click: function (evt) {
 		var withAssist = this.get("option") == "assist";
-		console.log("mit Vorlage: " + withAssist);
 		this.get("controller").set("withAssist", withAssist);
 	}
 });
@@ -205,9 +185,7 @@ App.Image = Ember.View.extend({
 	tagName: "span",
 	imageType: "",
 	imageURL: function () {
-		console.log(this.get("imageType"));
 		var path = "images/" + this.get("imageType") + ".png";
-		console.log(path);
 		return path;
 	}.property(),
 	template: Ember.Handlebars.compile('<img {{bindAttr src="view.imageURL"}}>')
@@ -253,9 +231,6 @@ App.PlayerViewExtended = Ember.View.extend({
 });
 
 App.PlayerViewDraggable = App.PlayerView.extend(DragNDrop.Draggable, {
-	// .setDragImage (in #dragStart) requires an HTML element as the first argument
-	// so you must tell Ember to create the view and it's element and then get the
-	// HTML representation of that element.
 	dragIconElement: Ember.View.create({
 		attributeBindings: ['src'],
 		tagName: 'img',
@@ -263,15 +238,12 @@ App.PlayerViewDraggable = App.PlayerView.extend(DragNDrop.Draggable, {
 	}),
 	dragStart: function (event) {
 		this._super(event);
-		// Let the controller know this view is dragging
 		this.set('content.isDragging', true);
-
 		// Set the drag image and location relative to the mouse/touch event
 		//var dataTransfer = event.originalEvent.dataTransfer;
 		//dataTransfer.setDragImage(this.get('dragIconElement'), 24, 24);
 	},
 	dragEnd: function (event) {
-		// Let the controller know this view is done dragging
 		this.set('content.isDragging', false);
 	}
 });
@@ -285,9 +257,7 @@ App.PlayerList = Ember.CollectionView.extend({
 	}),
 	dropBase: function (player) {
 		Ember.run.next(this, function () {
-			console.log(this.get("controller"));
 			this.get("controller").send("dropPlayer", player);
-
 		});
 	}
 });
@@ -303,12 +273,9 @@ App.PlayerListClub = App.PlayerList.extend(DragNDrop.Droppable, {
 		var viewId = event.originalEvent.dataTransfer.getData('Text'),
 			view = Ember.View.views[viewId];
 		var player = view.get("content");
-		console.log("playerView: " + player);
 		if (!clubPlayerList.contains(player)) {
-			console.log("drop into Club");
 			this.dropBase(player);
 		}
-
 		return this._super(event);
 	}
 });
@@ -321,10 +288,8 @@ App.PlayerListTeam = App.PlayerList.extend(DragNDrop.Droppable, {
 			view = Ember.View.views[viewId];
 		var player = view.get("content");
 		if (!teamPlayerList.contains(player)) {
-			console.log("drop into Team");
 			this.dropBase(player);
 		}
-
 		return this._super(event);
 	}
 });
@@ -345,15 +310,6 @@ App.DateField = Ember.TextField.extend({
 		return date;
 	}.property('value')
 });
-/*
- App.DateField = Ember.TextField.extend({
- type: "date"
- /*didInsertElement: function() {
- this.datepicker.on("changeDate", function() {
- this.trigger("change");
- });
- }
- });*/
 
 App.TimeField = Ember.TextField.extend({
 	type: 'time',

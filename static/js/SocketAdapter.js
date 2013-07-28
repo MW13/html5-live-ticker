@@ -7,12 +7,9 @@
  */
 TYPES = {
 	CREATE: "CREATE",
-	//CREATES: "CREATES",
 	UPDATE: "UPDATE",
 	INCREMENT_MINUTE: "INCREMENT_MINUTE",
-	//UPDATES: "UPDATES",
 	DELETE: "DELETE",
-	//DELETES: "DELETES",
 	FIND: "FIND",
 	FIND_MANY: "FIND_MANY",
 	FIND_QUERY: "FIND_QUERY",
@@ -29,7 +26,6 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 	},
 	serializer: DS.RESTSerializer.extend({
 		serializeId: function (id) {
-			console.log("Id: " + id);
 			return id.toString();
 		},
 		primaryKey: function (type) {
@@ -62,22 +58,9 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 		});
 		ws.on("loginResponse", function (payload) {
 			var user = payload;
-			console.log("User: " + user);
-			userManager.transitionTo("moderator");
 			var controller = App.__container__.lookup("controller:Login");
 			controller.transitionToRoute("index");
 			return App.store.load(App.User, user);
-		});
-		ws.on("delete", function (payload) {
-			var box, boxId;
-			boxId = payload.data['box'].id;
-			box = App.store.find(App.Box, boxId);
-			return App.store.unloadRecord(box);
-		});
-		ws.on("create", function (payload) {
-			console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " + payload);
-			window.pay = payload;
-			return App.store.load(App.Box, payload.data[payload.type]);
 		});
 		ws.on("update", function (payload) {
 			var minute = payload.data.match.minute;
@@ -85,13 +68,8 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 
 			var match = App.Match.find(payload.data.match["_id"]);
 			Ember.run(this, function () {
-				//App.store.get("adapter").didUpdateRecord(App.store, payload.type, {"minute": 0}, payload);
 				match.reload();
 			});
-			/*match.on("didLoad", function() {
-			 match.set("minute", minute);
-			 });*/
-			//return App.store.load(App.Match, payload.data[payload.type]);
 		});
 		ws.on("disconnect", function () {
 		});
@@ -135,20 +113,7 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	}, /*
-	 createRecords: function (store, type, records) {
-	 return this.send({
-	 store: store,
-	 type: type,
-	 records: records,
-	 requestType: TYPES.CREATES,
-	 callback: function (req, res) {
-	 return Ember.run(req.context, function () {
-	 return this.didCreateRecords(req.store, req.type, req.records, res);
-	 });
-	 }
-	 });
-	 },*/
+	},
 	updateRecord: function (store, type, record) {
 		return this.send({
 			store: store,
@@ -174,20 +139,7 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	}, /*
-	 updateRecords: function (store, type, records) {
-	 return this.send({
-	 store: store,
-	 type: type,
-	 records: records,
-	 requestType: TYPES.UPDATES,
-	 callback: function (req, res) {
-	 return Ember.run(req.context, function () {
-	 return this.didUpdateRecords(req.store, req.type, req.records, res);
-	 });
-	 }
-	 });
-	 },*/
+	},
 	deleteRecord: function (store, type, record) {
 		return this.send({
 			store: store,
@@ -200,20 +152,7 @@ App.SocketAdapter = DS.RESTAdapter.extend({
 				});
 			}
 		});
-	}, /*
-	 deleteRecords: function (store, type, records) {
-	 return this.send({
-	 store: store,
-	 type: type,
-	 records: records,
-	 requestType: TYPES.DELETES,
-	 callback: function (req, res) {
-	 return Ember.run(req.context, function () {
-	 return this.didDeleteRecords(req.store, req.type, req.records, res);
-	 });
-	 }
-	 });
-	 },*/
+	},
 	find: function (store, type, id) {
 		return this.send({
 			store: store,

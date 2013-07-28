@@ -41,16 +41,9 @@
 	cursor: pointer;
 }
 
-.listPlayer {
-
-}
-
 .listPlayer table {
 	width: 100%;
 	height: 20px;
-}
-
-.listPlayer .name {
 }
 
 .listPlayer .edit, .delete {
@@ -99,10 +92,6 @@ a {
 	margin-bottom: 20px;
 }
 
-.matchCollection {
-
-}
-
 .matchOverview {
 	border: 1px solid;
 	padding-top: 10px;
@@ -137,10 +126,6 @@ a {
 	margin-bottom: 20px;
 }
 
-.mE_goal {
-
-}
-
 li.mE_item {
 	margin: 5px 5px;
 }
@@ -164,10 +149,6 @@ span.mE_item_text {
 
 form label {
 	width: 200px;
-}
-
-legend {
-
 }
 
 .the-legend {
